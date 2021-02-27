@@ -8,13 +8,12 @@ LANG: C++
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <vector>
 
 using namespace std;
 
 int main() {
-	ofstream fout ("ride.out");
-	ifstream fin ("ride.in");
+	ofstream fout("ride.out");
+	ifstream fin("ride.in");
 
 	string s1,s2;
 	fin >> s1 >> s2;

@@ -8,7 +8,7 @@ LANG: C++
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <vector>
+#include <map>
 
 using namespace std;
 
@@ -19,30 +19,42 @@ int main() {
 	int N;
 	fin >> N;
 
-	vector<map<string,int>> data(N);
+	map<string,int> data;
 
 	for (int i = 0; i < N; ++i) {
 		string in;
 		fin >> in;
-		map<string,int> add {in, 0};
-		data.push_back(add);
+		data.insert(pair<string,int>(in,0));
 	}
 
 	for (int i = 0; i < N; ++i) {
-		string out;
-		fin >> out;
-		int gift, count;
-		fin >> gift >> count;
+		string giver;
+		fin >> giver;
+		int money, count;
+		fin >> money >> count;
 
-		if (gift % count != 0) {
-			data[out] -= gift - count;
+		if (count == 0) {
+			continue;
 		}
 
-		for (int j = 0, j < count; ++j) {
-			string in;
-			fout >> in;
-			data[in] += gift / count;
+		if (money == 0) {
+			for (int j = 0; j < count; ++j) {
+				string skip;
+				fin >> skip;
+			}
 		}
+
+		data[giver] -= money - (money % count);
+
+		for (int j = 0; j < count; ++j) {
+			string lucky;
+			fin >> lucky;
+			data[lucky] += money / count;
+		}
+	}
+
+	for (auto& it: data) {
+		fout << it.first << ' ' << it.second << '\n';
 	}
 
 	return 0;

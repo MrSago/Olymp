@@ -1,2 +1,2 @@
 # usaco_train
-usaco tasks
+Usaco tasks

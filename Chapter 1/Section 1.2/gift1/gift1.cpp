@@ -8,23 +8,26 @@ LANG: C++
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 #include <map>
 
 using namespace std;
 
 int main() {
-	ofstream fout ("gift1.out");
-	ifstream fin ("gift1.in");
+	ofstream fout("gift1.out");
+	ifstream fin("gift1.in");
 
 	int N;
 	fin >> N;
 
-	map<string,int> data;
+	vector<string> enumerate;
+	map<string, int> data;
 
 	for (int i = 0; i < N; ++i) {
 		string in;
 		fin >> in;
-		data.insert(pair<string,int>(in,0));
+		enumerate.push_back(in);
+		data.insert(pair<string, int>(in, 0));
 	}
 
 	for (int i = 0; i < N; ++i) {
@@ -53,8 +56,8 @@ int main() {
 		}
 	}
 
-	for (auto& it: data) {
-		fout << it.first << ' ' << it.second << '\n';
+	for (auto& it : enumerate) {
+		fout << it << ' ' << data[it] << '\n';
 	}
 
 	return 0;

@@ -1,2 +1,3 @@
 # usaco_train
-Usaco tasks.
+Usaco tasks for bad boys.
+

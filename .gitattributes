@@ -4,13 +4,13 @@
 .gitignore			export-ignore
 *readme.md			export-ignore
 *README.md			export-ignore
-*.out				export-ignore
 
 * text=auto
 
 # GitHub
 .github			text
 .gitattributes	text
+.gitignore		text
 *.md			text
 
 # Source files
@@ -18,6 +18,5 @@
 *.cpp			text
 *.py			text
 
-# Test files
+# Input test file
 *.in			text
-*.out			text

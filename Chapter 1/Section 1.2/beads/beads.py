@@ -1,67 +1,40 @@
-# Doesn't work
 """
 ID: deadly51
 TASK: beads
 LANG: PYTHON3
 """
-def all_the_same(elements):
-    return len(set(elements)) <= 1
 
+with open("beads.in", "r") as file:
+    n = int(file.readline().strip())
+    necklace = file.readline().strip()
 
-def to_list(n, string):
-    result = []
-    temp = []
-    try:
-        for i in range(n):
-            temp.append(string[i])
-            if string[i] != string[i+1]:
-                result.append("".join(temp))
-                temp = []
-    except IndexError:
-        if temp != []:
-            result.append("".join(temp))
-    return result + result
+necklace += necklace
+left = [[0 for _ in range(2)] for _ in range(len(necklace) + 1)]
+right = [[0 for _ in range(2)] for _ in range(len(necklace) + 1)]
+left[0][0] = 0
+left[0][1] = 0
+right[len(necklace)][0] = 0
+right[len(necklace)][1] = 0
+for i in range(1, len(necklace)):
+    if necklace[i-1] == "r":
+        left[i][0] = left[i-1][0] + 1
+    elif necklace[i-1] == "b":
+        left[i][1] = left[i-1][1] + 1
+    else:
+        left[i][0] = left[i-1][0] + 1
+        left[i][1] = left[i-1][1] + 1
+for i in range(len(necklace)-1, -1, -1):
+    if necklace[i] == "r":
+        right[i][0] = right[i+1][0] + 1
+    elif necklace[i] == "b":
+        right[i][1] = right[i+1][1] + 1
+    else:
+        right[i][0] = right[i+1][0] + 1
+        right[i][1] = right[i+1][1] + 1
 
-
-def sequencing(list):
-    result = []
-    if all_the_same(list):
-        return [len(list[0])]
-    nw = "w"
-    for i in range(len(list)):
-        if "w" not in list[i]:
-            nw = list[i][0]
-            break
-    temp = [list[0]]
-    checker = 1
-    for i in range(1, len(list)):
-        if nw not in list[i] and "w" not in list[i]:
-            result.append("".join(temp))
-            if "w" in list[i-1] and checker:
-                temp = [list[i-1]]
-                checker = 0
-            else:
-                temp = []
-                checker = 1
-            nw = list[i][0]
-        temp.append(list[i])
-    print(" ".join(result))
-    return result
-
-
-def find_max(n, string):
-    numbers = sequencing(to_list(n, string))
-    if len(numbers) == 1:
-        return str(numbers[0])
-    max_n = 0
-    for i in range(len(numbers)//2-1,len(numbers)-1):
-        temp = len(f"{numbers[i]}{numbers[i+1]}")
-        max_n = max(max_n, temp)
-    return(str(max_n))
-
-
-with open("beads.in", "r") as fin:
-    n = int(fin.readline().strip())
-    necklace = fin.readline().strip()
-    with open("beads.out", "w") as fout:
-        fout.write(find_max(n, necklace) + "\n")
+max_sequence_len = 0
+for i in range(len(necklace)):
+    max_sequence_len = max(max_sequence_len, max(left[i][0], left[i][1]) + max(right[i][0], right[i][1]))
+max_sequence_len = n if max_sequence_len > n else max_sequence_len
+with open("beads.out", "w") as file:
+    file.write(str(max_sequence_len)+"\n")

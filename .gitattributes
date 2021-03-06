@@ -1,6 +1,6 @@
 
 .github				export-ignore
-.gitattributes		export-ignore
+.gitattributes			export-ignore
 .gitignore			export-ignore
 *readme.md			export-ignore
 *README.md			export-ignore
@@ -9,14 +9,14 @@
 
 # GitHub
 .github			text
-.gitattributes	text
+.gitattributes		text
 .gitignore		text
 *.md			text
 
 # Source files
-*.c
+*.c			text
 *.cpp			text
 *.py			text
 
-# Input test file
+# Input test files
 *.in			text

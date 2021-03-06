@@ -5,19 +5,15 @@ TASK: ride
 LANG: C++
 */
 
-#include <iostream>
-#include <fstream>
-#include <string>
+#include <bits/stdc++.h>
 
 using namespace std;
 
 int main() {
-	ofstream fout("ride.out");
 	ifstream fin("ride.in");
+	ofstream fout("ride.out");
 
-	string s1,s2;
-	fin >> s1 >> s2;
-
+	string s1,s2; fin >> s1 >> s2;
 	int prod1 = 1, prod2 = 1;
 	for (auto& c: s1) {
 		prod1 *= c-'A'+1;

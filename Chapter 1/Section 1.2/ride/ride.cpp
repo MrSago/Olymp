@@ -13,7 +13,7 @@ int main() {
 	ifstream fin("ride.in");
 	ofstream fout("ride.out");
 
-	string s1,s2; fin >> s1 >> s2;
+	string s1, s2; fin >> s1 >> s2;
 	int prod1 = 1, prod2 = 1;
 	for (auto& c: s1) {
 		prod1 *= c-'A'+1;

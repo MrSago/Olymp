@@ -5,18 +5,27 @@ TASK: palsquare
 LANG: C++
 */
 
-#include <bits/stdc++.h>
+#include <fstream>
 
 using namespace std;
+
+inline void revstr(string& str) {
+	size_t len = str.length();
+	for (size_t i = 0; i < len / 2; ++i) {
+		auto tmp = str[i];
+		str[i] = str[len - 1 - i];
+		str[len - 1 - i] = tmp;
+	}
+}
 
 inline string dectobase(int N, int B) {
 	string str = "";
 	while (N) {
 		int tmp = N % B;
-		str += tmp >= 0 && tmp <= 9 ? (char)tmp + '0' : (char)tmp - 10 + 'A';
+		str += tmp >= 0x0 && tmp <= 0x9 ? (char)tmp + '0' : (char)tmp - 0xA + 'A';
 		N /= B;
 	}
-	reverse(str.begin(), str.end());
+	revstr(str);
 	return str;
 }
 

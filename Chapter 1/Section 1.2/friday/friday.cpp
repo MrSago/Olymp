@@ -5,9 +5,7 @@ TASK: friday
 LANG: C++
 */
 
-#include <bits/stdc++.h>
-
-#define START_YEAR (1900)
+#include <fstream>
 
 using namespace std;
 
@@ -20,7 +18,7 @@ int main() {
 	int offset = 0;
 	int N; fin >> N;
 
-	for (int i = START_YEAR; i < START_YEAR + N; ++i) {
+	for (int i = 1900; i < 1900 + N; ++i) {
 		for (int j = 0; j < 12; ++j) {
 			count13[ (5 + offset) % 7 ] += 1;
 			if (j == 1 && ((i % 100 != 0 && i % 4 == 0) || (i % 100 == 0 && i % 400 == 0))) {

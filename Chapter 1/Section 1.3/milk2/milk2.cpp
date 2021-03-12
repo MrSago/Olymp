@@ -5,9 +5,7 @@ TASK: milk2
 LANG: C++
 */
 
-#include <bits/stdc++.h>
-
-#define MAX_N (5000)
+#include <fstream>
 
 using namespace std;
 
@@ -20,7 +18,7 @@ inline int cmp(const void* a, const void* b) {
 	return ((mtime*)a)->start - ((mtime*)b)->start;
 }
 
-mtime milk[MAX_N];
+mtime milk[5000];
 
 int main() {
 	ifstream fin("milk2.in");
@@ -38,6 +36,7 @@ int main() {
 	for (int i = 1; i < N; ++i) {
 		mtime* iptr = milk + i, * icur_ptr = milk + icur;
 		int istart = iptr->start, icur_end = icur_ptr->end;
+		
 		if (istart > icur_end) {
 			tiddle = max(tiddle, istart - icur_end);
 			tmilk = max(tmilk, icur_end - icur_ptr->start);

@@ -5,7 +5,7 @@ TASK: ride
 LANG: C++
 */
 
-#include <bits/stdc++.h>
+#include <fstream>
 
 using namespace std;
 
@@ -15,11 +15,11 @@ int main() {
 
 	string s1, s2; fin >> s1 >> s2;
 	int prod1 = 1, prod2 = 1;
-	for (auto& c: s1) {
-		prod1 *= c-'A'+1;
+	for (const auto& c : s1) {
+		prod1 *= c - 'A' + 1;
 	}
-	for (auto& c: s2) {
-		prod2 *= c-'A'+1;
+	for (const auto& c : s2) {
+		prod2 *= c - 'A' + 1;
 	}
 
 	if (prod1 % 47 == prod2 % 47) {

@@ -5,7 +5,7 @@ TASK: transform
 LANG: C++
 */
 
-#include <bits/stdc++.h>
+#include <fstream>
 
 using namespace std;
 
@@ -114,12 +114,12 @@ public:
 	}
 	inline void getsolution() {
 		ofstream fout("transform.out");
-		if (rotate90())			{ fout << "1\n"; }
+		if (rotate90()) 		{ fout << "1\n"; }
 		else if (rotate180())	{ fout << "2\n"; }
 		else if (rotate270())	{ fout << "3\n"; }
 		else if (reflectH())	{ fout << "4\n"; }
 		else if (reflectV())	{ fout << "5\n"; }
-		else if (equal())		{ fout << "6\n"; }
+		else if (equal())   	{ fout << "6\n"; }
 		else					{ fout << "7\n"; }
 	}
 	~Solution() {

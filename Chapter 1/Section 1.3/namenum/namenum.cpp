@@ -5,7 +5,7 @@ TASK: namenum
 LANG: C++
 */
 
-#include <bits/stdc++.h>
+#include <fstream>
 
 using namespace std;
 
@@ -21,7 +21,7 @@ int main() {
 	while (dict >> name) {
 		if (name.length() == num.length()) {
 			string res = "";
-			for (auto& c: name) {
+			for (const auto& c : name) {
 				if (c == 'Q' || c == 'Z') {
 					break;
 				}
@@ -33,11 +33,10 @@ int main() {
 					break;
 				}
 			}
-			if (res != num) {
-				continue;
+			if (res == num) {
+				found = true;
+				fout << name << '\n';
 			}
-			found = true;
-			fout << name << '\n';
 		}
 	}
 

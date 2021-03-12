@@ -5,9 +5,18 @@ TASK: dualpal
 LANG: C++
 */
 
-#include <bits/stdc++.h>
+#include <fstream>
 
 using namespace std;
+
+inline void revstr(string& str) {
+	size_t len = str.length();
+	for (size_t i = 0; i < len / 2; ++i) {
+		auto tmp = str[i];
+		str[i] = str[len - 1 - i];
+		str[len - 1 - i] = tmp;
+	}
+}
 
 inline string dectobase(int N, int B) {
 	string str = "";
@@ -15,7 +24,7 @@ inline string dectobase(int N, int B) {
 		str += (char)(N % B) + '0';
 		N /= B;
 	}
-	reverse(str.begin(), str.end());
+	revstr(str);
 	return str;
 }
 

@@ -5,7 +5,7 @@ TASK: beads
 LANG: C++
 */
 
-#include <bits/stdc++.h>
+#include <fstream>
 
 using namespace std;
 
@@ -22,21 +22,20 @@ int main() {
 		char c = str[i];
 		int count = 0;
 		int replaces;
-
+		
 		if (c == 'w') {
 			replaces = 2;
 		} else {
 			replaces = 1;
 		}
-
+		
 		int k = i;
 		for (int j = 0; j <= replaces; ++j) {
-			for (; k < N + i && (str[k] == c || str[k] == 'w'); ++k) {
+			for (/*empty*/; k < N + i && (str[k] == c || str[k] == 'w'); ++k) {
 				count += 1;
 			}
 			c = str[k];
 		}
-
 		res = max(res, count);
 	}
 

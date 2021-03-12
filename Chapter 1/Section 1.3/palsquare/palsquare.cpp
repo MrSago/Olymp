@@ -21,8 +21,8 @@ inline void revstr(string& str) {
 inline string dectobase(int N, int B) {
 	string str = "";
 	while (N) {
-		int tmp = N % B;
-		str += tmp >= 0x0 && tmp <= 0x9 ? (char)tmp + '0' : (char)tmp - 0xA + 'A';
+		char tmp = static_cast<char>(N % B);
+		str += tmp >= 0x0 && tmp <= 0x9 ? tmp + '0' : tmp - 0xA + 'A';
 		N /= B;
 	}
 	revstr(str);

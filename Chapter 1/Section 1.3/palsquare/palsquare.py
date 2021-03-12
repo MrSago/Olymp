@@ -5,16 +5,12 @@ LANG: PYTHON3
 """
 
 
-def to_base(n, tob=10, fromb=10):
-    if isinstance(n, str):
-        n = int(n, fromb)
-    else:
-        n = int(n)
+def to_base(n, tob):
+    n = int(n)
     alph = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     if n < tob:
         return alph[n]
-    else:
-        return to_base(n // tob, tob) + alph[n % tob]
+    return to_base(n // tob, tob) + alph[n % tob]
 
 def pal(n):
     t = str(n)

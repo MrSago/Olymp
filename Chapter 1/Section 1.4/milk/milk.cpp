@@ -35,7 +35,7 @@ int main() {
 	int cost = 0;
 	for (int i = 0; i < M; ++i) {
 		N -= data[i].amount;
-		if (N <= 0) {
+		if (N < 0) {
 			cost += data[i].price * (data[i].amount + N);
 			break;
 		}

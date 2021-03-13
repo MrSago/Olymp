@@ -36,7 +36,7 @@ int main() {
 	for (int i = 1; i < N; ++i) {
 		mtime* iptr = milk + i, * icur_ptr = milk + icur;
 		int istart = iptr->start, icur_end = icur_ptr->end;
-		
+
 		if (istart > icur_end) {
 			tiddle = max(tiddle, istart - icur_end);
 			tmilk = max(tmilk, icur_end - icur_ptr->start);

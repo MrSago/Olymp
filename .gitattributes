@@ -8,7 +8,7 @@ README.txt			export-ignore
 # GitHub
 .gitattributes		text
 .gitignore		text
-README.txt			text
+README.txt		text
 
 # Source files
 *.c			text

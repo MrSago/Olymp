@@ -19,7 +19,6 @@ if M == 1:
 
 
 quantity = [0 for i in range(M-1)]
-index = [0, 0, 0]
 distances = [stalls[i]-stalls[i-1] for i in range(1, len(stalls))]
 
 for i in range(len(distances)):

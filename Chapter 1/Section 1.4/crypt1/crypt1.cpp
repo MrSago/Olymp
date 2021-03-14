@@ -16,7 +16,7 @@ inline bool check(int num) {
 	while (num) {
 		int digit = num % 10;
 		bool flag = false;
-		for (auto it : crypt) {
+		for (const auto& it : crypt) {
 			if (digit == it) {
 				flag = true;
 				break;

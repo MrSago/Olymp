@@ -1,14 +1,11 @@
 
-.github				export-ignore
 .gitattributes			export-ignore
 .gitignore			export-ignore
-*readme.md			export-ignore
-*README.md			export-ignore
+README.md			export-ignore
 
 * text=auto
 
 # GitHub
-.github			text
 .gitattributes		text
 .gitignore		text
 *.md			text

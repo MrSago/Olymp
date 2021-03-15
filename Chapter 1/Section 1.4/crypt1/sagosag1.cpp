@@ -46,7 +46,8 @@ int main() {
 			int p1 = i * (j % 10);
 			int p2 = i * (j / 10);
 			int prod = i * j;
-			if (p1 <= 999 &&
+			if (
+				p1 <= 999 &&
 				p2 <= 999 &&
 				prod <= 9999 &&
 				check(i) &&
@@ -59,7 +60,7 @@ int main() {
 			}
 		}
 	}
-	
+
 	fout << res << '\n';
 
 	return 0;

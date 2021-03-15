@@ -27,21 +27,19 @@ int main() {
 	int N, M;
 	fin >> N >> M;
 	for (int i = 0; i < M; ++i) {
-		farm* ptr = data + i;
-		fin >> ptr->price >> ptr->amount;
+		fin >> data[i].price >> data[i].amount;
 	}
 
 	qsort(data, M, sizeof(farm), cmp);
 
 	int cost = 0;
 	for (int i = 0; i < M; ++i) {
-		farm* ptr = data + i;
-		N -= ptr->amount;
+		N -= data[i].amount;
 		if (N < 0) {
-			cost += ptr->price * (ptr->amount + N);
+			cost += data[i].price * (data[i].amount + N);
 			break;
 		}
-		cost += ptr->price * ptr->amount;
+		cost += data[i].price * data[i].amount;
 	}
 
 	fout << cost << '\n';

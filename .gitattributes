@@ -1,20 +1,21 @@
 
-.gitattributes			export-ignore
-.gitignore			export-ignore
-README.txt			export-ignore
+.gitattributes          export-ignore
+.gitignore              export-ignore
+README.txt              export-ignore
 
 * text=auto
 
 # GitHub
-.gitattributes		text
-.gitignore		text
-README.txt		text
+.gitattributes          text
+.gitignore              text
+README.txt              text
 
 # Source files
-*.c			text
-*.cpp			text
-*.py			text
+*.c                     text
+*.cpp                   text
+*.py                    text
 
 # Input test files
-*.in			text
-*.txt			text
+*.in                    text
+*.txt                   text
+

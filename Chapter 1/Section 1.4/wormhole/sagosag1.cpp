@@ -10,11 +10,11 @@ LANG: C++
 using namespace std;
 
 int main() {
-	ifstream fin("wormhole.in");
-	ofstream fout("wormhole.out");
+    ifstream fin("wormhole.in");
+    ofstream fout("wormhole.out");
 
-	
+    
 
-	return 0;
+    return 0;
 }
 

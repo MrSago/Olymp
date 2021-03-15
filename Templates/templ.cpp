@@ -10,11 +10,11 @@ LANG: C++
 using namespace std;
 
 int main() {
-	ifstream fin(".in");
-	ofstream fout(".out");
+    ifstream fin(".in");
+    ofstream fout(".out");
 
 
 
-	return 0;
+    return 0;
 }
 

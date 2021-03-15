@@ -12,7 +12,7 @@ using namespace std;
 inline void revstr(string& str) {
 	size_t len = str.length();
 	for (size_t i = 0; i < len / 2; ++i) {
-		char tmp = str[i];
+		auto tmp = str[i];
 		str[i] = str[len - 1 - i];
 		str[len - 1 - i] = tmp;
 	}

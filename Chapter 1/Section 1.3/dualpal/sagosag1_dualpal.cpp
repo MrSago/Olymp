@@ -29,8 +29,9 @@ inline string dectobase(int N, int B) {
 }
 
 inline bool isPalindrom(string str) {
-    for (int i = 0; i < str.length(); ++i) {
-        if (str[i] != str[str.length() - 1 - i]) {
+    size_t len = str.length();
+    for (size_t i = 0; i < len; ++i) {
+        if (str[i] != str[len - 1 - i]) {
             return false;
         }
     }

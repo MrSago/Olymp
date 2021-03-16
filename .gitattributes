@@ -2,7 +2,6 @@
 .gitattributes          export-ignore
 .gitignore              export-ignore
 README.txt              export-ignore
-*.exe                   export-ignore
 
 * text=auto
 
@@ -12,14 +11,10 @@ README.txt              export-ignore
 README.txt              text
 
 # Source files
-*.c                     text
 *.cpp                   text
 *.py                    text
 
 # Input test files
 *.in                    text
 *.txt                   text
-
-# Execute files
-*.exe                   bin
 

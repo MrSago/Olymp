@@ -18,7 +18,7 @@ inline int cmp(const void* a, const void* b) {
     return ((farm*)a)->price - ((farm*)b)->price;
 }
 
-farm data[5000];
+farm f[5000];
 
 int main() {
     ifstream fin("milk.in");
@@ -27,15 +27,15 @@ int main() {
     int N, M;
     fin >> N >> M;
     for (int i = 0; i < M; ++i) {
-        farm* ptr = data + i;
+        farm* ptr = f + i;
         fin >> ptr->price >> ptr->amount;
     }
 
-    qsort(data, M, sizeof(farm), cmp);
+    qsort(f, M, sizeof(farm), cmp);
 
     int cost = 0;
     for (int i = 0; i < M; ++i) {
-        farm* ptr = data + i;
+        farm* ptr = f + i;
         N -= ptr->amount;
         if (N < 0) {
             cost += ptr->price * (ptr->amount + N);

@@ -40,10 +40,6 @@ int main() {
         }
     }
 
-    for (auto i = S.begin(); i != S.end(); ++i) {
-        fout << *i << '\n';
-    }
-
     vector<result> res;
     auto i = S.begin(); ++i;
     for (/*empty*/; i != S.end(); ++i) {

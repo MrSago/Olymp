@@ -7,34 +7,24 @@ LANG: C++
 
 #include <iostream>
 #include <fstream>
+#include <algorithm>
+#include <vector>
 #include <array>
 #include <set>
-#include <algorithm>
+#include <map>
+
 
 #define MAX_M (250)
-#define MAX_SET (31626) //comb(MAX_M + 2,2)
+#define MAX_SET (31626) //C(MAX_M + 2,2)
 
 using namespace std;
 
-/*constexpr int comb(int n, int m) {
-
-}*/
-
-using set_t = array<int, MAX_SET>;
-
-constexpr set_t calcset() {
-    set_t res = { 0 };
-    const set_t& ptr = res;
-    for (int p = 0, i = 0; p <= MAX_M; ++p) {
-        for (int q = p; q <= MAX_M; ++q) {
-            const_cast<set_t::reference>(ptr[i++]) = p*p + q*q;
-        }
+struct result {
+    int a, b;
+    bool operator<(const result& _entry) const {
+        return this->b < _entry.b;
     }
-    return res;
-}
-
-constexpr set_t bisqrt = calcset();
-
+};
 
 int main() {
     ifstream fin("ariprog.in");
@@ -43,13 +33,42 @@ int main() {
     int N, M;
     fin >> N >> M;
 
-    set<int> cpy(
-        bisqrt.begin(),
-        bisqrt.end()
-    );
+    set<int> S;
+    for (int p = 0; p <= M; ++p) {
+        for (int q = p; q <= M; ++q) {
+            S.insert(p*p + q*q);
+        }
+    }
 
-    for (const auto& it : cpy) {
-        fout << it << '\n';
+    for (auto i = S.begin(); i != S.end(); ++i) {
+        fout << *i << '\n';
+    }
+
+    vector<result> res;
+    auto i = S.begin(); ++i;
+    for (/*empty*/; i != S.end(); ++i) {
+        for (int j = 1; j != *S.rbegin(); ++j) {
+            int sum = *i;
+            bool ok = true;
+            for (int k = 1; k < N; ++k) {
+                sum += j;
+                if (!S.count(sum)) {
+                    ok = false;
+                    break;
+                }
+            }
+            if (ok) {
+                result in;
+                in.a = *i; in.b = j;
+                res.push_back(in);
+            }
+        }
+    }
+
+    sort(res.begin(), res.end());
+
+    for (const auto& it : res) {
+        fout << it.a << ' ' << it.b << '\n';
     }
 
     return 0;

@@ -5,24 +5,21 @@ TASK: ariprog
 LANG: C++
 */
 
-#include <iostream>
 #include <fstream>
 #include <algorithm>
 #include <vector>
-#include <array>
 #include <set>
-#include <map>
 
-
-#define MAX_M (250)
-#define MAX_SET (31626) //C(MAX_M + 2,2)
+//#define MAX_M (250)
+//#define MAX_SET (31626) //C(MAX_M + 2,2)
 
 using namespace std;
 
 struct result {
     int a, b;
+    result(int _a, int _b) : a(_a), b(_b) {}
     bool operator<(const result& _entry) const {
-        return this->b < _entry.b;
+        return b < _entry.b;
     }
 };
 
@@ -35,36 +32,38 @@ int main() {
 
     set<int> S;
     for (int p = 0; p <= M; ++p) {
+        int sq_p = p*p;
         for (int q = p; q <= M; ++q) {
-            S.insert(p*p + q*q);
+            S.insert(sq_p + q*q);
         }
     }
 
     vector<result> res;
-    auto i = S.begin(); ++i;
-    for (/*empty*/; i != S.end(); ++i) {
+    for (auto i = S.begin(); i != S.end(); ++i) {
+        int i_val = *i;
         for (int j = 1; j != *S.rbegin(); ++j) {
-            int sum = *i;
+            int sum = i_val;
             bool ok = true;
             for (int k = 1; k < N; ++k) {
                 sum += j;
-                if (!S.count(sum)) {
+                if (S.find(sum) == S.end()) {
                     ok = false;
                     break;
                 }
             }
             if (ok) {
-                result in;
-                in.a = *i; in.b = j;
-                res.push_back(in);
+                res.push_back(result(i_val, j));
             }
         }
     }
 
-    sort(res.begin(), res.end());
-
-    for (const auto& it : res) {
-        fout << it.a << ' ' << it.b << '\n';
+    if (res.size()) {
+        sort(res.begin(), res.end());
+        for (const auto& it : res) {
+            fout << it.a << ' ' << it.b << '\n';
+        }
+    } else {
+        fout << "NONE\n";
     }
 
     return 0;

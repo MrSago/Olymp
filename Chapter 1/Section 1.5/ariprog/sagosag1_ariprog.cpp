@@ -7,21 +7,23 @@ LANG: C++
 
 #include <fstream>
 #include <algorithm>
-#include <vector>
 #include <set>
 
 //#define MAX_M (250)
 //#define MAX_SET (31626) //C(MAX_M + 2,2)
+#define MAX_RES (10000)
 
 using namespace std;
 
 struct result {
     int a, b;
-    result(int _a, int _b) : a(_a), b(_b) {}
     bool operator<(const result& _entry) const {
         return b < _entry.b;
     }
 };
+
+int res_count = 0;
+result res[MAX_RES];
 
 int main() {
     ifstream fin("ariprog.in");
@@ -38,29 +40,35 @@ int main() {
         }
     }
 
-    vector<result> res;
-    for (auto i = S.begin(); i != S.end(); ++i) {
-        int i_val = *i;
-        for (int j = 1; j != *S.rbegin(); ++j) {
+    int S_end_value = *S.rbegin();
+    auto S_end_it = S.end();
+    for (auto it = S.begin(); it != S_end_it; ++it) {
+        int i_val = *it;
+        for (int j = 1; j != S_end_value; ++j) {
             int sum = i_val;
             bool ok = true;
             for (int k = 1; k < N; ++k) {
                 sum += j;
-                if (S.find(sum) == S.end()) {
+                if (S.find(sum) == S_end_it) {
                     ok = false;
                     break;
                 }
             }
             if (ok) {
-                res.push_back(result(i_val, j));
+                result* ptr = res + res_count++;
+                ptr->a = i_val; ptr->b = j;
+            }
+            if (sum >= S_end_value) {
+                break;
             }
         }
     }
 
-    if (res.size()) {
-        sort(res.begin(), res.end());
-        for (const auto& it : res) {
-            fout << it.a << ' ' << it.b << '\n';
+    if (res_count) {
+        sort(res, res + res_count);
+        for (int i = 0; i < res_count; ++i) {
+            result* ptr = res + i;
+            fout << ptr->a << ' ' << ptr->b << '\n';
         }
     } else {
         fout << "NONE\n";

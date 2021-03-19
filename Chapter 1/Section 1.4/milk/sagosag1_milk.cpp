@@ -24,8 +24,7 @@ int main() {
     ifstream fin("milk.in");
     ofstream fout("milk.out");
 
-    int N, M;
-    fin >> N >> M;
+    int N, M; fin >> N >> M;
     for (int i = 0; i < M; ++i) {
         farm* ptr = f + i;
         fin >> ptr->price >> ptr->amount;

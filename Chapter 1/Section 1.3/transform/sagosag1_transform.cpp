@@ -15,6 +15,7 @@ private:
     bool** res; // '-' == false == 0
     uint8_t size;
 
+
     // Pattern #1
     inline bool rotate90() {
         for (uint8_t i = 0; i < size; ++i) {
@@ -26,6 +27,7 @@ private:
         }
         return true;
     }
+
     // Pattern #2
     inline bool rotate180() {
         for (uint8_t i = 0; i < size; ++i) {
@@ -37,6 +39,7 @@ private:
         }
         return true;
     }
+
     // Pattern #3
     inline bool rotate270() {
         for (uint8_t i = 0; i < size; ++i) {
@@ -48,6 +51,7 @@ private:
         }
         return true;
     }
+
     // Pattern #4
     inline bool reflectH() {
         for (uint8_t i = 0; i < size; ++i) {
@@ -59,6 +63,7 @@ private:
         }
         return true;
     }
+
     // Pattern #5
     inline bool reflectV() {
         bool** tmp = new bool* [size];
@@ -68,16 +73,19 @@ private:
                 tmp[i][j] = mat[size - 1 - i][j];
             }
         }
+
         bool** ptr = mat;
         mat = tmp;
         bool check = equal() || rotate90() || rotate180() || rotate270();
         mat = ptr;
+
         for (uint8_t i = 0; i < size; ++i) {
             delete[] tmp[i];
         }
         delete[] tmp;
         return check;
     }
+
     // Pattern #6
     inline bool equal() {
         for (uint8_t i = 0; i < size; ++i) {
@@ -93,8 +101,10 @@ private:
 public:
     Solution() {
         ifstream fin("transform.in");
+
         int tmp; fin >> tmp; fin.get();
         size = static_cast<uint8_t>(tmp);
+
         mat = new bool* [size];
         for (uint8_t i = 0; i < size; ++i) {
             mat[i] = new bool [size];
@@ -103,6 +113,7 @@ public:
             }
             fin.get();
         }
+
         res = new bool* [size];
         for (uint8_t i = 0; i < size; ++i) {
             res[i] = new bool [size];
@@ -112,9 +123,10 @@ public:
             fin.get();
         }
     }
+
     inline void getsolution() {
         ofstream fout("transform.out");
-        if (rotate90())         { fout << "1\n"; }
+        if      (rotate90())    { fout << "1\n"; }
         else if (rotate180())   { fout << "2\n"; }
         else if (rotate270())   { fout << "3\n"; }
         else if (reflectH())    { fout << "4\n"; }
@@ -122,6 +134,7 @@ public:
         else if (equal())       { fout << "6\n"; }
         else                    { fout << "7\n"; }
     }
+
     ~Solution() {
         for (uint8_t i = 0; i < size; ++i) {
             delete[] mat[i];

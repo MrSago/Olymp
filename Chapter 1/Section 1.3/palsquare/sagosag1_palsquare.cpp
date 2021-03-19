@@ -44,6 +44,7 @@ int main() {
     ofstream fout("palsquare.out");
 
     int B; fin >> B;
+
     for (int N = 1; N <= 300; ++N) {
         string num = dectobase(N * N, B);
         if (isPalindrom(num)) {

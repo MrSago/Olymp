@@ -22,13 +22,11 @@ int main() {
         char c = str[i];
         int count = 0;
         int replaces;
-
         if (c == 'w') {
             replaces = 2;
         } else {
             replaces = 1;
         }
-
         int k = i;
         for (int j = 0; j <= replaces; ++j) {
             for (/*empty*/; k < N + i && (str[k] == c || str[k] == 'w'); ++k) {

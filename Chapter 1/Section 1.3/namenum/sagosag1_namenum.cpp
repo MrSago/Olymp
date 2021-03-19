@@ -15,8 +15,8 @@ int main() {
     ifstream dict("dict.txt");
 
     string num; fin >> num;
-    bool found = false;
 
+    bool found = false;
     string name;
     while (dict >> name) {
         if (name.length() == num.length()) {

@@ -15,7 +15,7 @@ using namespace std;
 struct wormhole {
     int x, y;
     bool operator<(const wormhole& _entry) const {
-        return this->y != _entry.y ? this->y < _entry.y : this->x < _entry.x;
+        return y != _entry.y ? y < _entry.y : x < _entry.x;
     }
 };
 
@@ -47,7 +47,6 @@ inline bool is_cycle() {
 inline void find_pairs(int x = 1) {
     if (x > N) {
         answer += static_cast<int>(is_cycle());
-        return;
     } else if (!pairs[x]) {
         for (int i = x + 1; i <= N; ++i) {
             if (!pairs[i]) {

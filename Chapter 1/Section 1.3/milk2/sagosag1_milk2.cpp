@@ -27,7 +27,7 @@ int main() {
     int N; fin >> N;
     for (int i = 0; i < N; ++i) {
         mtime* ptr = milk + i;
-        fin >> ptr->start; fin >> ptr->end;
+        fin >> ptr->start >> ptr->end;
     }
 
     qsort(milk, N, sizeof(mtime), cmp);
@@ -36,7 +36,6 @@ int main() {
     for (int i = 1; i < N; ++i) {
         mtime* iptr = milk + i, * icur_ptr = milk + icur;
         int istart = iptr->start, icur_end = icur_ptr->end;
-
         if (istart > icur_end) {
             tiddle = max(tiddle, istart - icur_end);
             tmilk = max(tmilk, icur_end - icur_ptr->start);

@@ -22,7 +22,7 @@ struct wormhole {
 int N;
 wormhole wh[MAX_N + 1];
 int pairs[MAX_N + 1] = { 0 };
-int answer;
+int answer = 0;
 
 inline bool find_cycle(int count, int now, int begin, bool paired) {
     if (count != 1 && now == begin && !paired) {

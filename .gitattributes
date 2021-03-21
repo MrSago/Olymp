@@ -1,14 +1,14 @@
 
 .gitattributes          export-ignore
 .gitignore              export-ignore
-README.txt              export-ignore
+*README.txt             export-ignore
 
 * text=auto
 
 # GitHub
 .gitattributes          text
 .gitignore              text
-README.txt              text
+*README.txt             text
 
 # Source files
 *.cpp                   text
@@ -18,3 +18,5 @@ README.txt              text
 *.in                    text
 *.txt                   text
 
+# Answer test files
+*answer.txt             text

@@ -5,20 +5,11 @@ TASK: ariprog
 LANG: C++
 */
 
-#define _DEBUG_ON
-
-#ifdef _DEBUG_ON
-#include <chrono>
-#include <iostream>
-#endif
-
 #include <fstream>
 #include <algorithm>
-#include <set>
 
-//#define MAX_M (250)
-//#define MAX_SET (31626) //C(MAX_M + 2,2)
 #define MAX_RES (10000)
+#define MAX_BSQ (125000)
 
 using namespace std;
 
@@ -29,8 +20,8 @@ struct result {
     }
 };
 
-int res_count = 0;
 result res[MAX_RES];
+bool bsq[MAX_BSQ] = { false };
 
 int main() {
     ifstream fin("ariprog.in");
@@ -39,71 +30,45 @@ int main() {
     int N, M;
     fin >> N >> M;
 
-#ifdef _DEBUG_ON
-    auto start1 = chrono::high_resolution_clock::now();
-#endif
-    set<int> S;
+    int res_count = 0;
+    int bsq_size = M * M * 2;
+
     for (int p = 0; p <= M; ++p) {
-        int sq_p = p*p;
+        int sq_p = p * p;
         for (int q = p; q <= M; ++q) {
-            S.insert(sq_p + q*q);
+            bsq[sq_p + q * q] = true;
         }
     }
-#ifdef _DEBUG_ON
-    auto stop1 = chrono::high_resolution_clock::now();
-#endif
 
-#ifdef _DEBUG_ON
-    auto start2 = chrono::high_resolution_clock::now();
-#endif
-    int S_end_value = *S.rbegin();
-    auto S_end_it = S.end();
-    for (auto it = S.begin(); it != S_end_it; ++it) {
-        int i_val = *it;
-        for (int j = 1; j != S_end_value; ++j) {
-            int sum = i_val;
+    result* res_ptr = res;
+    for (int i = 0; i < bsq_size; ++i) {
+        bool* i_ptr = bsq + i;
+        if (!*i_ptr) {
+            continue;
+        }
+        for (int j = 1; j <= (bsq_size - i) / (N - 1); ++j) {
             bool ok = true;
             for (int k = 1; k < N; ++k) {
-                sum += j;
-                if (S.find(sum) == S_end_it) {
+                if (!*(i_ptr + j * k)) {
                     ok = false;
                     break;
                 }
             }
             if (ok) {
-                result* ptr = res + res_count++;
-                ptr->a = i_val; ptr->b = j;
-            }
-            if (sum >= S_end_value) {
-                break;
+                res_ptr->a = i; res_ptr->b = j;
+                ++res_ptr; ++res_count;
             }
         }
     }
-#ifdef _DEBUG_ON
-    auto stop2 = chrono::high_resolution_clock::now();
-#endif
 
-#ifdef _DEBUG_ON
-    auto start3 = chrono::high_resolution_clock::now();
-#endif
     if (res_count) {
         sort(res, res + res_count);
-        for (int i = 0; i < res_count; ++i) {
-            result* ptr = res + i;
+        for (result* ptr = res, * end_ptr = res + res_count; ptr != end_ptr; ++ptr) {
             fout << ptr->a << ' ' << ptr->b << '\n';
         }
     } else {
         fout << "NONE\n";
     }
-#ifdef _DEBUG_ON
-    auto stop3 = chrono::high_resolution_clock::now();
-#endif
-
-#ifdef _DEBUG_ON
-    cout << "section1: " << (stop1 - start1).count() * 1e-9 << '\n';
-    cout << "section2: " << (stop2 - start2).count() * 1e-9 << '\n';
-    cout << "section3: " << (stop3 - start3).count() * 1e-9 << '\n';
-#endif
 
     return 0;
 }

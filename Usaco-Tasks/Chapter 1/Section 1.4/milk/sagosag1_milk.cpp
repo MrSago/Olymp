@@ -25,22 +25,21 @@ int main() {
     ofstream fout("milk.out");
 
     int N, M; fin >> N >> M;
-    for (int i = 0; i < M; ++i) {
-        farm* ptr = f + i;
+    for (farm* ptr = f, * end_ptr = f + M; ptr != end_ptr; ++ptr) {
         fin >> ptr->price >> ptr->amount;
     }
 
     qsort(f, M, sizeof(farm), cmp);
 
     int cost = 0;
-    for (int i = 0; i < M; ++i) {
-        farm* ptr = f + i;
-        N -= ptr->amount;
+    for (farm* ptr = f, * end_ptr = f + M; ptr != end_ptr; ++ptr) {
+        int pr = ptr->price, am = ptr->amount;
+        N -= am;
         if (N < 0) {
-            cost += ptr->price * (ptr->amount + N);
+            cost += pr * (am + N);
             break;
         }
-        cost += ptr->price * ptr->amount;
+        cost += pr * am;
     }
 
     fout << cost << '\n';

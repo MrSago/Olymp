@@ -27,12 +27,13 @@ int main() {
         } else {
             replaces = 1;
         }
-        int k = i;
+        int k = i, cmp = N + i;
         for (int j = 0; j <= replaces; ++j) {
-            for (/*empty*/; k < N + i && (str[k] == c || str[k] == 'w'); ++k) {
-                count += 1;
+            char c_k = str[k];
+            for (/*empty*/; k < cmp && ((c_k = str[k]) == c || c_k == 'w'); ++k) {
+                ++count;
             }
-            c = str[k];
+            c = c_k;
         }
         res = max(res, count);
     }

@@ -40,7 +40,7 @@ int main() {
         }
         data[giver] -= money - (money % count);
         int gift = money / count;
-        for (int j = 0; j < count; ++j) {
+        while (count--) {
             string lucky; fin >> lucky;
             data[lucky] += gift;
         }

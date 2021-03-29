@@ -20,13 +20,14 @@ int main() {
     ifstream fin("barn1.in");
     ofstream fout("barn1.out");
 
-    int M, S, C; fin >> M >> S >> C;
+    int M, S, C;
+    fin >> M >> S >> C;
     if (M >= C) {
         fout << C << '\n';
         return 0;
     }
-    for (int i = 0; i < C; ++i) {
-        fin >> stalls[i];
+    for (int* ptr = stalls, * end_ptr = stalls + C; ptr != end_ptr; ++ptr) {
+        fin >> *ptr;
     }
 
     qsort(stalls, C, sizeof(int), cmp);

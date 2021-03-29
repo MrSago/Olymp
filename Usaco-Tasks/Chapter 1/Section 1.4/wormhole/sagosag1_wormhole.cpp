@@ -67,12 +67,11 @@ int main() {
     ofstream fout("wormhole.out");
 
     fin >> N;
-    for (int i = 1; i <= N; ++i) {
-        wormhole* ptr = wh + i;
+    for (wormhole* ptr = wh + 1, * end_ptr = wh + 1 + N; ptr != end_ptr; ++ptr) {
         fin >> ptr->x >> ptr->y;
     }
 
-    sort(wh + 1, wh + N + 1);
+    sort(wh + 1, wh + 1 + N);
     find_pairs();
 
     fout << answer << '\n';

@@ -36,8 +36,8 @@ int main() {
 
     int N; fin >> N;
     crypt.resize(N);
-    for (int i = 0; i < N; ++i) {
-        fin >> crypt[i];
+    for (auto& it : crypt) {
+        fin >> it;
     }
 
     int res = 0;

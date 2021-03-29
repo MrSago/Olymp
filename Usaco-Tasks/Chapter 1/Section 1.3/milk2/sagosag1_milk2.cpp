@@ -25,8 +25,7 @@ int main() {
     ofstream fout("milk2.out");
 
     int N; fin >> N;
-    for (int i = 0; i < N; ++i) {
-        mtime* ptr = milk + i;
+    for (mtime* ptr = milk, * end_ptr = milk + N; ptr != end_ptr; ++ptr) {
         fin >> ptr->start >> ptr->end;
     }
 

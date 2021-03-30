@@ -1,17 +1,9 @@
 
 #include <iostream>
-#include <cmath>
 
 using namespace std;
 
-inline bool sost(int n) {
-    for (int i = 2; i <= sqrt(n); ++i) {
-        if (n % i == 0) {
-            return true;
-        }
-    }
-    return false;
-}
+int citizens[100];
 
 int main() {
     ios::sync_with_stdio(false);
@@ -19,14 +11,21 @@ int main() {
 
     int N; cin >> N;
 
-    int n1 = N / 2, n2 = N - n1;
-    while (1) {
-        if (sost(n1) && sost(n2)) {
-            cout << n1 << ' ' << n2 << '\n';
-            return 0;
+    int _max = -1;
+    for (int* ptr = citizens, * end_ptr = citizens + N; ptr != end_ptr; ++ptr) {
+        int in; cin >> in;
+        if (in > _max) {
+            _max = in;
         }
-        --n1; ++n2;
+        *ptr = in;
     }
+
+    int res = 0;
+    for (int* ptr = citizens, * end_ptr = citizens + N; ptr != end_ptr; ++ptr) {
+        res += _max - *ptr;
+    }
+
+    cout << res << '\n';
 
     return 0;
 }

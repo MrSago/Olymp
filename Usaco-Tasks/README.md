@@ -2,9 +2,6 @@
 # USACO training progress
 
 
-***
-
-
 ## Chapter #1 (Sections 4/6) ⏰
 
 #### Section 1.1 - Intoduction ✅
@@ -46,6 +43,8 @@ Task | Description | Ready
 Task | Description | Ready
 :---:|:-----------:|:----:
 [???](https://www.google.com/) | ??? | ❌
+
+***
 
 ## Chapter #2 (Sections 0/?) ❌
 

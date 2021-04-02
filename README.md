@@ -1,16 +1,16 @@
 
-#Welcome to my Olymp-Base repository! 👋
+# Welcome to my Olymp-Base repository! 👋
 
 Here you can find my solutions for basic Olympiad and Sports programming problems. (\*\^_^\*)
 
-####This repository contains solutions for:
+#### This repository contains solutions for:
 - [Codeforces](https://codeforces.com/)
 - [USACO](https://train.usaco.org/)
 - Olympiads and contests
 
 ***
 
-####Links and profiles:
+#### Links and profiles:
 - Codeforces: [MrS4g0](https://codeforces.com/profile/MrS4g0)
 - USACO ID: _sagosag1_
 ***

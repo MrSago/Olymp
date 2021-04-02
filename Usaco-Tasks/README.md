@@ -1,9 +1,9 @@
 
-## USACO training progress
+# USACO training progress
 
 ***
 
-### Chapter #1 (Sections 4/6) ⏰
+## Chapter #1 (Sections 4/6) ⏰
 
 #### Section 1.1 - Intoduction ✅
 #### Section 1.2 - Submitting Solutions✅

@@ -1,14 +1,16 @@
 
 .gitattributes          export-ignore
 .gitignore              export-ignore
-*README.txt             export-ignore
+*README.md              export-ignore
+*table.png              export-ignore
 
 * text=auto
 
 # GitHub
 .gitattributes          text
 .gitignore              text
-*README.txt             text
+*README.md              text
+*table.png              image
 
 # Source files
 *.cpp                   text

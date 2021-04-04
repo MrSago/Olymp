@@ -4,4 +4,7 @@
 *.exe
 *.out
 output.txt
+*cf.in
+*cf.ok
+*cf.out
 

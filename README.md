@@ -1,10 +1,10 @@
 
-# Welcome to my Olymp-Base repository! 👋
+# Welcome to Olymp-Base repository! 👋
 
 Here you can find my solutions for basic Olympiad and Sports programming problems. (\*\^_^\*)
 
 #### This repository contains solutions for:
-- [Codeforces](https://codeforces.com/)
+- [CodeForces](https://codeforces.com/)
 - [USACO](https://train.usaco.org/)
 - Olympiads and contests
 

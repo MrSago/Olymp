@@ -10,7 +10,7 @@ int main() {
 
     int N; cin >> N;
 
-    cout << (uint64_t)powl(3, N) - (N - 1) << '\n';
+
 
     return 0;
 }

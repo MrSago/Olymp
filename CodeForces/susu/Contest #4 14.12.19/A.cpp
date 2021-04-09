@@ -22,7 +22,7 @@ int main() {
         sum[0][i] = sum[0][i - 1] + t[0][i];
     }
     for (int i = 1; i < N; ++i) {
-            sum[i][0] = sum[i - 1][0] + t[i][0];
+        sum[i][0] = sum[i - 1][0] + t[i][0];
     }
 
     for (int y = 1; y < N; ++y) {

@@ -10,7 +10,7 @@
 .gitattributes          text
 .gitignore              text
 *README.md              text
-*table.png              image
+*table.png              bin
 
 # Source files
 *.cpp                   text
@@ -19,7 +19,4 @@
 # Input test files
 *.in                    text
 *.txt                   text
-
-# Answer test files
-*answer.txt             text
 

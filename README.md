@@ -11,7 +11,7 @@ Here you can find my solutions for Olympiad and Sports programming problems. (\*
 ***
 
 #### Links and profiles:
-- Codeforces: [MrS4g0](https://codeforces.com/profile/MrS4g0)
+- CodeForces: [MrS4g0](https://codeforces.com/profile/MrS4g0)
 - USACO ID: _sagosag1_
 
 #### Social:

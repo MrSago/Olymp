@@ -1,7 +1,7 @@
 
-# Welcome to Olymp-Base repository! 👋
+# Welcome to my Olymp repository! 👋
 
-Here you can find my solutions for basic Olympiad and Sports programming problems. (\*\^_^\*)
+Here you can find my solutions for Olympiad and Sports programming problems. (\*\^_^\*)
 
 #### This repository contains solutions for:
 - [CodeForces](https://codeforces.com/)
@@ -13,6 +13,10 @@ Here you can find my solutions for basic Olympiad and Sports programming problem
 #### Links and profiles:
 - Codeforces: [MrS4g0](https://codeforces.com/profile/MrS4g0)
 - USACO ID: _sagosag1_
+
+#### Social:
+- [Discord Server](https://discord.gg/H4UdszUA9h)
+
 ***
                             ───────────────────────────────
                             ──────────▄▄▄▄▄▄▄▄▄▄▄──────────

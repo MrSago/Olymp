@@ -1,6 +1,7 @@
 
 # USACO training progress
 
+***
 
 ## Chapter #1 (Sections 4/6) ⏰
 

@@ -10,7 +10,7 @@
 .gitattributes          text
 .gitignore              text
 *README.md              text
-*table.png              bin
+*.png                   bin
 
 # Source files
 *.cpp                   text

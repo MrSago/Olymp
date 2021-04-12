@@ -3,8 +3,8 @@
 
 using namespace std;
 
-const int MOD = (int)1e9 + 7;
-const int MAX_STR = (int)1e5 + 2;
+constexpr int MOD = (int)1e9 + 7;
+constexpr int MAX_STR = (int)1e5 + 2;
 int fib[MAX_STR];
 
 int main() {

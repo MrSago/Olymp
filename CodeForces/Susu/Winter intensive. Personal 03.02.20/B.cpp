@@ -21,7 +21,7 @@ int main() {
         }
         prev = cur;
     }
-    
+
     cout << max(max_count, count) << '\n';
 
     return 0;

@@ -15,7 +15,7 @@ int main() {
             cout << '0';
         }
         cout << " 1";
-        
+
         ++c;
         for (int i = b; i > 1; --i) {
             if (i == c) {

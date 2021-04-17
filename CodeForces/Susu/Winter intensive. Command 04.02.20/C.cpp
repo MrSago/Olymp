@@ -9,7 +9,7 @@ int main() {
 
     int c, d, n, m, k;
     cin >> c >> d >> n >> m >> k;
-    
+
     if (k >= n * m) {
         cout << "0\n";
         return 0;

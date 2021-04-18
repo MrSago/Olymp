@@ -3,7 +3,7 @@
 
 ***
 
-## Chapter #1 (Sections 4/6) ⏰
+## Chapter #1 (Sections 5/6) ⏰
 
 #### Section 1.1 - Intoduction ✔
 
@@ -34,16 +34,18 @@ Task | Description | Ready
 [wormhole](https://github.com/MrSago/Olymp-Base/tree/main/Usaco-Tasks/Chapter%201/Section%201.4/wormhole) | Wormholes | ✔
 [skidesign](https://github.com/MrSago/Olymp-Base/tree/main/Usaco-Tasks/Chapter%201/Section%201.4/skidesign) | Ski Course Design | ✔
 
-#### Section 1.5 - More Search Techniques (1/2) ⏰
+#### Section 1.5 - More Search Techniques (2/2) ✔
 Task | Description | Ready
 :---:|:-----------:|:----:
 [ariprog](https://github.com/MrSago/Olymp-Base/tree/main/Usaco-Tasks/Chapter%201/Section%201.5/ariprog) | Arithmetic Progressions | ✔
-[milk3](https://github.com/MrSago/Olymp-Base/tree/main/Usaco-Tasks/Chapter%201/Section%201.5/milk3) | Mother's Milk | ⏰
+[milk3](https://github.com/MrSago/Olymp-Base/tree/main/Usaco-Tasks/Chapter%201/Section%201.5/milk3) | Mother's Milk | ✔
 
-#### Section 1.6 - Binary Numbers (0/?) ❌
+#### Section 1.6 - Binary Numbers (0/3) ⏰
 Task | Description | Ready
 :---:|:-----------:|:----:
-[???](https://www.google.com/) | ??? | ❌
+[numtri](https://www.google.com/) | Number Triangles | ⏰
+[pprime](https://www.google.com/) | Prime Palindromes | ❌
+[sprime](https://www.google.com/) | SuperPrime Rib | ❌
 
 ***
 

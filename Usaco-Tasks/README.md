@@ -40,12 +40,12 @@ Task | Description | Ready
 [ariprog](https://github.com/MrSago/Olymp-Base/tree/main/Usaco-Tasks/Chapter%201/Section%201.5/ariprog) | Arithmetic Progressions | ✔
 [milk3](https://github.com/MrSago/Olymp-Base/tree/main/Usaco-Tasks/Chapter%201/Section%201.5/milk3) | Mother's Milk | ✔
 
-#### Section 1.6 - Binary Numbers (0/3) ⏰
+#### Section 1.6 - Binary Numbers (2/3) ⏰
 Task | Description | Ready
 :---:|:-----------:|:----:
-[numtri](https://www.google.com/) | Number Triangles | ⏰
-[pprime](https://www.google.com/) | Prime Palindromes | ❌
-[sprime](https://www.google.com/) | SuperPrime Rib | ❌
+[numtri](https://github.com/MrSago/Olymp/tree/main/Usaco-Tasks/Chapter%201/Section%201.6/numtri) | Number Triangles | ✔
+[pprime](https://github.com/MrSago/Olymp/tree/main/Usaco-Tasks/Chapter%201/Section%201.6/pprime) | Prime Palindromes | ✔
+[sprime](https://github.com/MrSago/Olymp/tree/main/Usaco-Tasks/Chapter%201/Section%201.6/sprime) | SuperPrime Rib | ⏰
 
 ***
 

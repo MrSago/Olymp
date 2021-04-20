@@ -1,9 +1,11 @@
 
 # USACO training progress
 
+
 ***
 
-## Chapter #1 (Sections 5/6) ⏰
+
+## Chapter #1 - Getting started (Sections 6/6) ✔
 
 #### Section 1.1 - Intoduction ✔
 
@@ -40,14 +42,37 @@ Task | Description | Ready
 [ariprog](https://github.com/MrSago/Olymp-Base/tree/main/Usaco-Tasks/Chapter%201/Section%201.5/ariprog) | Arithmetic Progressions | ✔
 [milk3](https://github.com/MrSago/Olymp-Base/tree/main/Usaco-Tasks/Chapter%201/Section%201.5/milk3) | Mother's Milk | ✔
 
-#### Section 1.6 - Binary Numbers (2/3) ⏰
+#### Section 1.6 - Binary Numbers (3/3) ✔
 Task | Description | Ready
 :---:|:-----------:|:----:
 [numtri](https://github.com/MrSago/Olymp/tree/main/Usaco-Tasks/Chapter%201/Section%201.6/numtri) | Number Triangles | ✔
 [pprime](https://github.com/MrSago/Olymp/tree/main/Usaco-Tasks/Chapter%201/Section%201.6/pprime) | Prime Palindromes | ✔
-[sprime](https://github.com/MrSago/Olymp/tree/main/Usaco-Tasks/Chapter%201/Section%201.6/sprime) | SuperPrime Rib | ⏰
+[sprime](https://github.com/MrSago/Olymp/tree/main/Usaco-Tasks/Chapter%201/Section%201.6/sprime) | SuperPrime Rib | ✔
+
 
 ***
 
-## Chapter #2 (Sections 0/?) ❌
+
+## Chapter #2 - Bigger Challenges (Sections 0/4) ⏰
+
+#### Section 2.1 - Graph Theory (0/5) ⏰
+Task | Description | Ready
+:---:|:-----------:|:----:
+[castle](https://github.com/MrSago/Olymp/tree/main/Usaco-Tasks/Chapter%202/Section%202.1/castle) | The Castle | ⏰
+[frac1](https://github.com/MrSago/Olymp/tree/main/Usaco-Tasks/Chapter%202/Section%202.1/frac1) | Ordered Fractions | ❌
+[sort3](https://github.com/MrSago/Olymp/tree/main/Usaco-Tasks/Chapter%202/Section%202.1/sort3) | Sorting a Three-Valued Sequence | ❌
+[holstein](https://github.com/MrSago/Olymp/tree/main/Usaco-Tasks/Chapter%202/Section%202.1/holstein) | Healthy Holsteins | ❌
+[hamming](https://github.com/MrSago/Olymp/tree/main/Usaco-Tasks/Chapter%202/Section%202.1/hamming) | Hamming Codes | ❌
+
+#### Section 2.2 - Data Structures, Dynamic Prog (0/?) ❌
+
+#### Section 2.3 - (All tasks) (0/?) ❌
+
+#### Section 2.4 - Shortest Paths (0/?) ❌
+
+
+***
+
+
+## Chapter #3 - Techniques more subtle (Sections 0/?) ❌
 

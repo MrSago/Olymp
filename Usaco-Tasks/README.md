@@ -7,7 +7,10 @@
 
 ## Chapter #1 - Getting started (Sections 6/6) ✔
 
-#### Section 1.1 - Intoduction ✔
+#### Section 1.1 - Intoduction (1/1) ✔
+Task | Description | Ready
+:---:|:-----------:|:----:
+[test](https://github.com/MrSago/Olymp/tree/main/Usaco-Tasks/Chapter%201/Section%201.1/test) | The First Challenge | ✔
 
 #### Section 1.2 - Submitting Solutions (4/4) ✔
 Task | Description | Ready

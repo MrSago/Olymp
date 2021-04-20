@@ -17,7 +17,7 @@ int main() {
     int R; fin >> R;
 
     vector<vector<int>> v(R);
-    
+
     for (int i = 0; i < R; ++i) {
         v[i].resize(i + 1);
         for (int j = 0; j <= i; ++j) {

@@ -10,7 +10,7 @@ LANG: C++
 using namespace std;
 
 int A, B, C;
-bool pos[21][21] = { false };
+bool pos[21][21] = { { false } };
 
 inline void rec(int c = C, int b = 0) {
     if (pos[c][b]) {

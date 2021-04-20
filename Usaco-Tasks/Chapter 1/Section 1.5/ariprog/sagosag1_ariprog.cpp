@@ -8,9 +8,6 @@ LANG: C++
 #include <fstream>
 #include <algorithm>
 
-#define MAX_RES (10000)
-#define MAX_BSQ (125000)
-
 using namespace std;
 
 struct result {
@@ -19,6 +16,9 @@ struct result {
         return b < _entry.b;
     }
 };
+
+#define MAX_RES (10000)
+#define MAX_BSQ (125000)
 
 result res[MAX_RES];
 bool bsq[MAX_BSQ] = { false };

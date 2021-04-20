@@ -8,8 +8,6 @@ LANG: C++
 #include <fstream>
 #include <algorithm>
 
-#define MAX_N (12)
-
 using namespace std;
 
 struct wormhole {
@@ -18,6 +16,8 @@ struct wormhole {
         return y != _entry.y ? y < _entry.y : x < _entry.x;
     }
 };
+
+#define MAX_N (12)
 
 int N;
 wormhole wh[MAX_N + 1];

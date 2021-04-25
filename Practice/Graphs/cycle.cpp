@@ -6,9 +6,9 @@
 
 using namespace std;
 
+using vi = vector<int>;
 using vc = vector<char>;
 using vb = vector<bool>;
-using vi = vector<int>;
 using Graph = vector<vi>;
 
 Graph g;
@@ -46,7 +46,7 @@ bool isCycleN(int v, int p = -1) {
 inline void scanGraph() {
     int N; cin >> N >> org; cin.ignore();
     g.resize(N);
-    for (auto& u : g) {
+    for (vi& u : g) {
         stringstream ss; string s;
         getline(cin, s);
         ss << s;

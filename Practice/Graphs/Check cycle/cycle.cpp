@@ -12,15 +12,15 @@ using vb = vector<bool>;
 using Graph = vector<vi>;
 
 Graph g;
-bool org;
+bool directed;
 vc color;
 vb used;
 
-bool isCycleO(int v) {
+bool isCycleD(int v) {
     color[v] = 1;
     for (int& u : g[v]) {
         if (color[u] == 0) {
-            if (isCycleO(u)) {
+            if (isCycleD(u)) {
                 return true;
             }
         } else if (color[u] == 1) {
@@ -31,11 +31,11 @@ bool isCycleO(int v) {
     return false;
 }
 
-bool isCycleN(int v, int p = -1) {
+bool isCycleU(int v, int p = -1) {
     used[v] = true;
     for (int& u : g[v]) {
         if (!used[u]) {
-            isCycleN(u, v);
+            isCycleU(u, v);
         } else if (u != p) {
             return true;
         }
@@ -44,7 +44,7 @@ bool isCycleN(int v, int p = -1) {
 }
 
 inline void scanGraph() {
-    int N; cin >> N >> org; cin.ignore();
+    int N; cin >> N >> directed; cin.ignore();
     g.resize(N);
     for (vi& u : g) {
         stringstream ss; string s;
@@ -52,7 +52,7 @@ inline void scanGraph() {
         ss << s;
         while (!ss.eof()) {
             int v; ss >> v;
-            if (v < 0) {
+            if (v <= 0) {
                 break;
             }
             u.push_back(v - 1);
@@ -61,7 +61,7 @@ inline void scanGraph() {
 }
 
 inline void printGraph() {
-    cout << "Orgraph: " << (org ? "true" : "false") << '\n';
+    cout << "Graph: " << (directed ? "directed" : "undirected") << '\n';
     for (int i = 0; i < (int)g.size(); ++i) {
         cout << '[' << i + 1 << "] => {";
         for (auto& j : g[i]) {
@@ -71,26 +71,25 @@ inline void printGraph() {
     }
 }
 
-inline bool findCycle() {
-    if (org) {
+inline bool checkCycle() {
+    if (directed) {
         color.assign(g.size(), 0);
         for (int i = 0; i < (int)g.size(); ++i) {
-            if (isCycleO(i)) {
+            if (isCycleD(i)) {
                 return true;
             }
         }
-        return false;
     } else {
         used.assign(g.size(), false);
         for (int i = 0; i < (int)g.size(); ++i) {
             if (!used[i]) {
-                if (isCycleN(i)) {
+                if (isCycleU(i)) {
                     return true;
                 }
             }
         }
-        return false;
     }
+    return false;
 }
 
 int main() {
@@ -101,7 +100,7 @@ int main() {
 
     printGraph();
 
-    if (findCycle()) {
+    if (checkCycle()) {
         cout << "Cyclic\n";
     } else {
         cout << "Acyclic\n";

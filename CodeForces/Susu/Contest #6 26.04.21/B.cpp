@@ -10,8 +10,8 @@ int res = 1;
 
 void dfs(short v, int d = 1) {
     res = max(res, d);
-    for (short u = 0; u < (short)g[v].size(); ++u) {
-        dfs(g[v][u], d + 1);
+    for (short u : g[v]) {
+        dfs(u, d + 1);
     }
 }
 

@@ -64,7 +64,7 @@ inline void printGraph() {
     cout << "Graph: " << (directed ? "directed" : "undirected") << '\n';
     for (int i = 0; i < (int)g.size(); ++i) {
         cout << '[' << i + 1 << "] => {";
-        for (auto& j : g[i]) {
+        for (int& j : g[i]) {
             cout << ' ' << j + 1;
         }
         cout << " }\n";

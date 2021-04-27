@@ -4,13 +4,14 @@
 
 using namespace std;
 
-vector<int> g[2000];
+vector<short> g[2001];
+short n;
 int res = 1;
 
-void dfs(int u, int d = 1) {
+void dfs(short v, int d = 1) {
     res = max(res, d);
-    for (int& v : g[u]) {
-        dfs(v, d + 1);
+    for (short u = 0; u < (short)g[v].size(); ++u) {
+        dfs(g[v][u], d + 1);
     }
 }
 
@@ -18,16 +19,16 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
 
-    int n; cin >> n;
-    for (int i = 0; i < n; ++i) {
-        int p; cin >> p;
+    cin >> n;
+    for (short i = 1; i <= n; ++i) {
+        short p; cin >> p;
         if (p == -1) {
             continue;
         }
-        g[i].push_back(p);
+        g[p].push_back(i);
     }
 
-    for (int i = 0; i < n; ++i) {
+    for (short i = 1; i <= n; ++i) {
         dfs(i);
     }
 

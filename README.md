@@ -8,6 +8,10 @@ Here you can find my solutions for Olympiad and Sports programming problems. (\*
 - [USACO](https://train.usaco.org/)
 - Olympiads and contests
 
+#### Compilers and interpreters used:
+- gcc/g++ (c11/c++17)
+- Python 3.9.4
+
 ***
 
 #### Links and profiles:

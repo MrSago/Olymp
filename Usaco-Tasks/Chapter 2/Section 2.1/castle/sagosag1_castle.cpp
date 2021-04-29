@@ -48,7 +48,6 @@ inline void find_comps() {
 
 inline vc getPaths(int number) {
     const char paths[4] = {'D', 'R', 'U', 'L'};
-
     vc ret;
     if (number == 0) {
         for (char c : paths) {
@@ -56,7 +55,6 @@ inline vc getPaths(int number) {
         }
         return ret;
     }
-
     bool walls[4] = { false };
     if (number >= 8) {
         walls[0] = true;
@@ -73,7 +71,6 @@ inline vc getPaths(int number) {
     if (number == 1) {
         walls[3] = true;
     }
-
     for (int i = 0; i < 4; ++i) {
         if (!walls[i]) {
             ret.push_back(paths[i]);
@@ -83,7 +80,7 @@ inline vc getPaths(int number) {
 }
 
 
-#define DBG
+//#define DBG
 #ifdef DBG
     #include <iostream>
     #include <chrono>
@@ -108,6 +105,12 @@ inline vc getPaths(int number) {
                 std::cout << j << " ";
             }
             std::cout << "}\n";
+        }
+    }
+    inline void printCons(std::vector<std::pair<int,int>>& cons) {
+        std::cout << "connections:\n";
+        for (auto& it : cons) {
+            std::cout << "{ " << it.first << ' ' << it.second << " }\n";
         }
     }
     inline void castleVis(std::ifstream& fin) {
@@ -161,13 +164,14 @@ inline vc getPaths(int number) {
     #define PRINT_TIME do{}while(0);
     inline void printGraph() {}
     inline void printComp() {}
+    inline void printCons(std::vector<std::pair<int,int>>&) {}
     inline void castleVis(std::ifstream&) {}
 #endif //DBG
 
 
 int main() {
     START_TIME
-    ios::sync_with_stdio(false);
+    //ios::sync_with_stdio(false);
     ifstream fin("castle.in");
     ofstream fout("castle.out");
 
@@ -205,50 +209,68 @@ int main() {
     );
 
     int res = 0;
-    pair<int,int> wall;
-    for (int i = 0; i < (int)components.size(); ++i) {
-        for (auto j : components[i]) {
-            int ver[] = { 
-                (j - 1) % M == M - 1 ? -1 : j - 1, 
-                (j + 1) % M == 0     ? -1 : j + 1, 
-                j - M < 0            ? -1 : j - M, 
-                j + M > N - 1        ? -1 : j + M
-            };
-            for (auto k = components.begin() + i + 1; k != components.end(); ++k) {
-                for (int z : ver) {
-                    if (z != -1 && find((*k).begin(), (*k).end(), z) != (*k).end()) {
-                        int sz = components[i].size() + (*k).size();
+    vector<pair<int,int>> connections;
+    bool flag = false;
+    for (int i = 0; i < (int)components.size() - 1; ++i) {
+        for (int j = i + 1; j < (int)components.size(); ++j) {
+            for (int k : components[i]) {
+                int v[] = {
+                    (k - 1) % M == M - 1 ? -1 : k - 1, //L
+                    (k + 1) % M == 0     ? -1 : k + 1, //R
+                    k < M                ? -1 : k - M, //U
+                    k >= M * (N - 1)     ? -1 : k + M  //D
+                };
+                for (int s : v) {
+                    if (s != -1 && find(components[j].begin(), components[j].end(), s) != components[j].end()) {
+                        int sz = (int)components[i].size() + (int)components[j].size();
                         if (sz >= res) {
                             res = sz;
-                            wall = { max(j, wall.first), min(z, wall.second) };
+                            if (flag) {
+                                connections.clear();
+                                flag = false;
+                            }
+                            connections.push_back( { k, s } );
                         }
                     }
                 }
             }
+            flag = !connections.empty();
         }
     }
 
-    char dir = 'E';
-    int tmp = wall.first - wall.second;
-    if (tmp == 1) {
+
+    //int tmp = wall.first - wall.second;
+    // if (tmp == 1) {
+    //     dir = 'W';
+    // } else if (tmp == -1) {
+    //     dir = 'E';
+    // } else if (tmp == M - 1) {
+    //     dir = 'N';
+    // } else if (tmp == 1 - M) {
+    //     dir = 'S';
+    // }
+
+    char dir;
+    int tmp = (*connections.rbegin()).first - (*connections.rbegin()).second;
+    if (tmp == 1) {         //L
         dir = 'W';
-    } else if (tmp == -1) {
+    } else if (tmp == -1) { //R
         dir = 'E';
-    } else if (tmp == M - 1) {
+    } else if (tmp == M) {  //U
         dir = 'N';
-    } else if (tmp == 1 - M) {
+    } else {                //D
         dir = 'S';
     }
 
-    fout << components.size() << '\n' << 
-            components[0].size() << '\n' << 
-            res << '\n' << 
-            wall.first / M + 1 << ' ' << wall.first % M + 1 << ' ' << dir << '\n';
+    fout << components.size() << '\n'
+         << components[0].size() << '\n'
+         << res << '\n'
+         << (*connections.rbegin()).first / M + 1 << ' ' << (*connections.rbegin()).first % M + 1 << ' ' << dir << '\n';
 
     PRINT_TIME
-
     printGraph();
     printComp();
+    printCons(connections);
     castleVis(fin);
 
     return 0;

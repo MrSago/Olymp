@@ -61,7 +61,7 @@ Task | Description | Ready
 #### Section 2.1 - Graph Theory (0/5) ⏰
 Task | Description | Ready
 :---:|:-----------:|:----:
-[castle](https://github.com/MrSago/Olymp/tree/main/Usaco-Tasks/Chapter%202/Section%202.1/castle) | The Castle | ⏰
+[castle](https://github.com/MrSago/Olymp/tree/main/Usaco-Tasks/Chapter%202/Section%202.1/castle) | The Castle | 2/8
 [frac1](https://github.com/MrSago/Olymp/tree/main/Usaco-Tasks/Chapter%202/Section%202.1/frac1) | Ordered Fractions | ❌
 [sort3](https://github.com/MrSago/Olymp/tree/main/Usaco-Tasks/Chapter%202/Section%202.1/sort3) | Sorting a Three-Valued Sequence | ❌
 [holstein](https://github.com/MrSago/Olymp/tree/main/Usaco-Tasks/Chapter%202/Section%202.1/holstein) | Healthy Holsteins | ❌

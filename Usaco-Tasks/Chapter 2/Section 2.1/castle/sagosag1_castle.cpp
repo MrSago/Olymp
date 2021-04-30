@@ -5,7 +5,7 @@ TASK: castle
 LANG: C++
 */
 
-// deadly51 and sagosag1(MrS4g0) collab
+// deadly51(@ggodos) and sagosag1(@MrS4g0) collab
 
 
 #include <fstream>
@@ -65,7 +65,7 @@ inline vc getPaths(int number) {
         number -= 4;
     }
     if (number >= 2) {
-        walls[2] = true; 
+        walls[2] = true;
         number -= 2;
     }
     if (number == 1) {

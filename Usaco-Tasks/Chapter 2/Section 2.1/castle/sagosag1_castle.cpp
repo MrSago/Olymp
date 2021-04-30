@@ -86,8 +86,8 @@ inline vc getPaths(int number) {
     #include <chrono>
     #include <cassert>
     #define START_TIME auto start = std::chrono::high_resolution_clock::now();
-    #define PRINT_TIME auto stop = std::chrono::high_resolution_clock::now(); \
-                       std::cout << "time: " << (stop - start).count() * 1e-6 << " ms\n";
+    #define STOP_TIME auto stop = std::chrono::high_resolution_clock::now();
+    #define PRINT_TIME std::cout << "time: " << (stop - start).count() * 1e-6 << " ms\n";
     inline void printGraph() {
         std::cout << "graph:\n";
         for (int i = 0; i < (int)g.size(); ++i) {
@@ -155,10 +155,11 @@ inline vc getPaths(int number) {
         cout << '\n';
     }
     inline void debugInFile() {
-        assert(freopen("debug.out","w", stdout));
+        assert(freopen("debug.out", "w", stdout));
     }
 #else //if !DBG
     #define START_TIME do{}while(0);
+    #define STOP_TIME do{}while(0);
     #define PRINT_TIME do{}while(0);
     inline void printGraph() {}
     inline void printComp() {}
@@ -256,6 +257,7 @@ int main() {
          << res << '\n'
          << connection.first / M + 1 << ' ' << connection.first % M + 1 << ' ' << dir << '\n';
 
+    STOP_TIME
     debugInFile();
     PRINT_TIME
     printGraph();

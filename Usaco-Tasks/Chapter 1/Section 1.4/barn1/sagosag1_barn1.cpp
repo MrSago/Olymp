@@ -17,6 +17,7 @@ int stalls[200];
 int dist[199];
 
 int main() {
+    ios::sync_with_stdio(false);
     ifstream fin("barn1.in");
     ofstream fout("barn1.out");
 

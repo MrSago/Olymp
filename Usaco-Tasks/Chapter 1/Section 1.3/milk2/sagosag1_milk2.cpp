@@ -21,6 +21,7 @@ inline int cmp(const void* a, const void* b) {
 mtime milk[5000];
 
 int main() {
+    ios::sync_with_stdio(false);
     ifstream fin("milk2.in");
     ofstream fout("milk2.out");
 

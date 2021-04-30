@@ -22,6 +22,7 @@ inline bool checkdist(int a, int b) {
 }
 
 int main() {
+    ios::sync_with_stdio(false);
     ifstream fin("combo.in");
     ofstream fout("combo.out");
 

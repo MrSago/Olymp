@@ -12,6 +12,7 @@ LANG: C++
 using namespace std;
 
 int main() {
+    ios::sync_with_stdio(false);
     ifstream fin("gift1.in");
     ofstream fout("gift1.out");
 

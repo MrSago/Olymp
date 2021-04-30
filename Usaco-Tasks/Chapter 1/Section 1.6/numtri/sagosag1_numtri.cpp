@@ -11,6 +11,7 @@ LANG: C++
 using namespace std;
 
 int main() {
+    ios::sync_with_stdio(false);
     ifstream fin("numtri.in");
     ofstream fout("numtri.out");
 

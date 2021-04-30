@@ -40,6 +40,7 @@ inline bool isPalindrom(string str) {
 }
 
 int main() {
+    ios::sync_with_stdio(false);
     ifstream fin("palsquare.in");
     ofstream fout("palsquare.out");
 

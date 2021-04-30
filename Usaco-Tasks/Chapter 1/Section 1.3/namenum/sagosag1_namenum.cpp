@@ -10,6 +10,7 @@ LANG: C++
 using namespace std;
 
 int main() {
+    ios::sync_with_stdio(false);
     ifstream fin("namenum.in");
     ofstream fout("namenum.out");
     ifstream dict("dict.txt");

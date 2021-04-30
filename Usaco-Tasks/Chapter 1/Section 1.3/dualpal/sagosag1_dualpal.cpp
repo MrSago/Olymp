@@ -39,6 +39,7 @@ inline bool isPalindrom(string str) {
 }
 
 int main() {
+    ios::sync_with_stdio(false);
     ifstream fin("dualpal.in");
     ofstream fout("dualpal.out");
 

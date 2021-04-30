@@ -146,6 +146,7 @@ public:
 };
 
 int main() {
+    ios::sync_with_stdio(false);
     Solution s;
     s.getsolution();
     return 0;

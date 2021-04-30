@@ -21,6 +21,7 @@ inline int cmp(const void* a, const void* b) {
 farm f[5000];
 
 int main() {
+    ios::sync_with_stdio(false);
     ifstream fin("milk.in");
     ofstream fout("milk.out");
 

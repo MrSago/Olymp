@@ -24,6 +24,7 @@ result res[MAX_RES];
 bool bsq[MAX_BSQ] = { false };
 
 int main() {
+    ios::sync_with_stdio(false);
     ifstream fin("ariprog.in");
     ofstream fout("ariprog.out");
 

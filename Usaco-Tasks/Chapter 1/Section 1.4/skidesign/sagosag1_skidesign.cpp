@@ -16,6 +16,7 @@ using namespace std;
 int hills[MAX_N];
 
 int main() {
+    ios::sync_with_stdio(false);
     ifstream fin("skidesign.in");
     ofstream fout("skidesign.out");
 

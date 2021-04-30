@@ -12,6 +12,7 @@ LANG: C++
 using namespace std;
 
 int main() {
+    ios::sync_with_stdio(false);
     ifstream fin("sprime.in");
     ofstream fout("sprime.out");
 

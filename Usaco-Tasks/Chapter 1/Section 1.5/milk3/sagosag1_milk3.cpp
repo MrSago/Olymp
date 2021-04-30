@@ -39,6 +39,7 @@ inline void rec(int c = C, int b = 0) {
 }
 
 int main() {
+    ios::sync_with_stdio(false);
     ifstream fin("milk3.in");
     ofstream fout("milk3.out");
 

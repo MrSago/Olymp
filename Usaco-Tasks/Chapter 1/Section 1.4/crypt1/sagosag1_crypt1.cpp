@@ -31,6 +31,7 @@ inline bool check(int num) {
 }
 
 int main() {
+    ios::sync_with_stdio(false);
     ifstream fin("crypt1.in");
     ofstream fout("crypt1.out");
 

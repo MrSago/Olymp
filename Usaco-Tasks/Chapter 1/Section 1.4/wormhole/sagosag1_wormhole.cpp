@@ -63,6 +63,7 @@ inline void find_pairs(int x = 1) {
 }
 
 int main() {
+    ios::sync_with_stdio(false);
     ifstream fin("wormhole.in");
     ofstream fout("wormhole.out");
 

@@ -5,7 +5,7 @@ TASK: castle
 LANG: C++
 */
 
-// deadly51(@ggodos) and sagosag1(@MrS4g0) collab
+// deadly51(@ggodos) and sagosag1(@MrSago) collab
 
 
 #include <fstream>
@@ -36,7 +36,7 @@ void dfs (int v) {
 }
 
 inline void find_comps() {
-    for (int i = 0; i < (int)g.size(); i++) {
+    for (int i = 0; i < (int)g.size(); ++i) {
         if (!visited[i]) {
             comp.clear();
             dfs(i);
@@ -84,6 +84,7 @@ inline vc getPaths(int number) {
 #ifdef DBG
     #include <iostream>
     #include <chrono>
+    #include <cassert>
     #define START_TIME auto start = std::chrono::high_resolution_clock::now();
     #define PRINT_TIME auto stop = std::chrono::high_resolution_clock::now(); \
                        std::cout << "time: " << (stop - start).count() * 1e-6 << " ms\n";
@@ -107,12 +108,6 @@ inline vc getPaths(int number) {
             std::cout << "}\n";
         }
     }
-    inline void printCons(std::vector<std::pair<int,int>>& cons) {
-        std::cout << "connections:\n";
-        for (auto& it : cons) {
-            std::cout << "{ " << it.first << ' ' << it.second << " }\n";
-        }
-    }
     inline void castleVis(std::ifstream& fin) {
         fin.close();
         fin.clear();
@@ -126,8 +121,8 @@ inline vc getPaths(int number) {
                 std::vector<char> sp = getPaths(f);
                 for (char k : sp) {
                     switch (k) {
-                        case 'D':
-                            field[i + 1][j] = ' ';
+                        case 'L':
+                            field[i][j - 1] = ' ';
                             break;
                         case 'R':
                             field[i][j + 1] = ' ';
@@ -135,8 +130,8 @@ inline vc getPaths(int number) {
                         case 'U':
                             field[i - 1][j] = ' ';
                             break;
-                        case 'L':
-                            field[i][j - 1] = ' ';
+                        case 'D':
+                            field[i + 1][j] = ' ';
                             break;
                     }
                 }
@@ -159,19 +154,22 @@ inline vc getPaths(int number) {
         }
         cout << '\n';
     }
+    inline void debugInFile() {
+        assert(freopen("debug.out","w", stdout));
+    }
 #else //if !DBG
     #define START_TIME do{}while(0);
     #define PRINT_TIME do{}while(0);
     inline void printGraph() {}
     inline void printComp() {}
-    inline void printCons(std::vector<std::pair<int,int>>&) {}
     inline void castleVis(std::ifstream&) {}
+    inline void debugInFile() {}
 #endif //DBG
 
 
 int main() {
     START_TIME
-    //ios::sync_with_stdio(false);
+    ios::sync_with_stdio(false);
     ifstream fin("castle.in");
     ofstream fout("castle.out");
 
@@ -209,8 +207,7 @@ int main() {
     );
 
     int res = 0;
-    vector<pair<int,int>> connections;
-    bool flag = false;
+    pair<int,int> connection;
     for (int i = 0; i < (int)components.size() - 1; ++i) {
         for (int j = i + 1; j < (int)components.size(); ++j) {
             for (int k : components[i]) {
@@ -223,103 +220,48 @@ int main() {
                 for (int s : v) {
                     if (s != -1 && find(components[j].begin(), components[j].end(), s) != components[j].end()) {
                         int sz = (int)components[i].size() + (int)components[j].size();
-                        if (sz >= res) {
+                        if (sz > res) {
                             res = sz;
-                            if (flag) {
-                                connections.clear();
-                                flag = false;
+                            connection = { k, s };
+                        } else if (sz == res) {
+                            if (k % M < connection.first % M) {
+                                connection = { k, s };
+                            } else if ((k % M == connection.first % M) && (k / M > connection.first / M)) {
+                                connection = { k, s };
                             }
-                            connections.push_back( { k, s } );
+                        }
+                        if (connection.first - connection.second == -M) {
+                            swap(connection.first, connection.second);
                         }
                     }
                 }
             }
-            flag = !connections.empty();
         }
     }
 
-
-    //int tmp = wall.first - wall.second;
-    // if (tmp == 1) {
-    //     dir = 'W';
-    // } else if (tmp == -1) {
-    //     dir = 'E';
-    // } else if (tmp == M - 1) {
-    //     dir = 'N';
-    // } else if (tmp == 1 - M) {
-    //     dir = 'S';
-    // }
-
     char dir;
-    int tmp = (*connections.rbegin()).first - (*connections.rbegin()).second;
-    if (tmp == 1) {         //L
-        dir = 'W';
-    } else if (tmp == -1) { //R
-        dir = 'E';
-    } else if (tmp == M) {  //U
-        dir = 'N';
-    } else {                //D
-        dir = 'S';
+    int tmp = connection.first - connection.second;
+    if (tmp == 1) {
+        dir = 'W'; //L
+    } else if (tmp == -1) {
+        dir = 'E'; //R
+    } else if (tmp == M) {
+        dir = 'N'; //U
+    } else {
+        dir = 'S'; //D
     }
 
     fout << components.size() << '\n'
          << components[0].size() << '\n'
          << res << '\n'
-         << (*connections.rbegin()).first / M + 1 << ' ' << (*connections.rbegin()).first % M + 1 << ' ' << dir << '\n';
+         << connection.first / M + 1 << ' ' << connection.first % M + 1 << ' ' << dir << '\n';
 
+    debugInFile();
     PRINT_TIME
     printGraph();
     printComp();
-    printCons(connections);
     castleVis(fin);
 
     return 0;
 }
-
-
-
-
-
-
-
-
-// 27
-// 55
-// 85
-// 11_11_E
-// ---- your output ---------
-// 27
-// 55
-// 85
-// 8_11_E
-
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
-// #       #       #       #       #       #       #           #
-// # # # # #   #   #   #   #   #   #   #   #   #   # # #   #   #
-// #           #       #       #       #       #       #       #
-// #   # # # # # # # # # # # # # # # # # # # # # # #   #   #   #
-// #   #   #                               #       #   #       #
-// # # #   # # # # # # # # # # # # # # # # # # #   #   #   #   #
-// #       #                                   #   #   #       #
-// # # #   #   # # # # # # # # # # # # # # #   #   # # #   #   #
-// #   #   #   #   #                   #   #   #   #   #       #
-// #   # # #   #   # # # # #   # # # # #   #   # # #   # # # # #
-// #       #   #           #   #           #       #           #
-// #   # # #   #   # # # # #   # # # # #   # # #   #   # # #   #
-// #   #   #   #   #                   #   #       #           #
-// # # #   #   #   #   # # # # # # #   #   #   # # # # # # # # #
-// #       #   #   #   #           #   #   #-->#               #
-// # # #   #   # # #   #   # # #   #   # # #   #   # # # # #   #
-// #   #   #           #           #           #   #           #
-// #   # # #   # # #   #   # # #   #   # # #   #   #   # # # # #
-// #       #   #   #   #           #   #   #   #   #           #
-// #   # # #   #   #   # # # # # # #   #   #   #   # # # # #   #
-// #   #   #   #   #                   #   #   #   #           #
-// # # #   # # #   # # # # #   # # # # # # # # #   #   # # # # #
-// #   #   #   #           #   #       #       #   #           #
-// #   #   # # # # # # # # #   # # # # # # # # #   # # # # #   #
-// #   #   #   #   #                   #   #       #           #
-// #   # # #   #   # # # # # # # # # # #   #   # # #   # # # # #
-// #   #   #   #   #           #           #                   #
-// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 

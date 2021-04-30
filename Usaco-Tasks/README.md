@@ -58,7 +58,7 @@ Task | Description | Ready
 
 ## Chapter #2 - Bigger Challenges (Sections 0/4) ⏰
 
-#### Section 2.1 - Graph Theory (0/5) ⏰
+#### Section 2.1 - Graph Theory (1/5) ⏰
 Task | Description | Ready
 :---:|:-----------:|:----:
 [castle](https://github.com/MrSago/Olymp/tree/main/Usaco-Tasks/Chapter%202/Section%202.1/castle) | The Castle | ✔

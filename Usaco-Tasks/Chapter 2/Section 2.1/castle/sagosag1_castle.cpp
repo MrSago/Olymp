@@ -28,7 +28,7 @@ vi comp;
 void dfs (int v) {
     visited[v] = true;
     comp.push_back(v);
-    for (int i : g[v]) {
+    for (auto& i : g[v]) {
         if (!visited[i]) {
             dfs(i);
         }
@@ -50,7 +50,7 @@ inline vc getPaths(int number) {
     const char paths[4] = {'D', 'R', 'U', 'L'};
     vc ret;
     if (number == 0) {
-        for (char c : paths) {
+        for (auto& c : paths) {
             ret.push_back(c);
         }
         return ret;
@@ -88,11 +88,14 @@ inline vc getPaths(int number) {
     #define START_TIME auto start = std::chrono::high_resolution_clock::now();
     #define STOP_TIME auto stop = std::chrono::high_resolution_clock::now();
     #define PRINT_TIME std::cout << "time: " << (stop - start).count() * 1e-6 << " ms\n";
+    inline void debugInFile() {
+        assert(freopen("debug.out", "w", stdout));
+    }
     inline void printGraph() {
         std::cout << "graph:\n";
         for (int i = 0; i < (int)g.size(); ++i) {
             std::cout << '[' << i << "] => {";
-            for (int j : g[i]) {
+            for (auto& j : g[i]) {
                 std::cout << ' ' << j;
             }
             std::cout << " }\n";
@@ -102,7 +105,7 @@ inline vc getPaths(int number) {
         std::cout << "components:\n";
         for (auto& it : components) {
             std::cout << '[' << it.size() << "] => { ";
-            for (int j : it) {
+            for (auto& j : it) {
                 std::cout << j << " ";
             }
             std::cout << "}\n";
@@ -119,7 +122,7 @@ inline vc getPaths(int number) {
                 field[i][j] = ' ';
                 int f; fin >> f;
                 std::vector<char> sp = getPaths(f);
-                for (char k : sp) {
+                for (auto& k : sp) {
                     switch (k) {
                         case 'L':
                             field[i][j - 1] = ' ';
@@ -144,7 +147,7 @@ inline vc getPaths(int number) {
         std::cout << "\n";
         for (auto& it : field) {
             std::cout << "# ";
-            for (char j : it) {
+            for (auto& j : it) {
                 std::cout << j << ' ';
             }
             std::cout << "#\n";
@@ -152,19 +155,16 @@ inline vc getPaths(int number) {
         for (int i = 0; i <= M + M; ++i) {
             std::cout << "# ";
         }
-        cout << '\n';
-    }
-    inline void debugInFile() {
-        assert(freopen("debug.out", "w", stdout));
+        std::cout << '\n';
     }
 #else //if !DBG
     #define START_TIME do{}while(0);
     #define STOP_TIME do{}while(0);
     #define PRINT_TIME do{}while(0);
+    inline void debugInFile() {}
     inline void printGraph() {}
     inline void printComp() {}
     inline void castleVis(std::ifstream&) {}
-    inline void debugInFile() {}
 #endif //DBG
 
 
@@ -181,7 +181,7 @@ int main() {
     for (int i = 0; i < (int)g.size(); ++i) {
         int n; fin >> n;
         vc paths = getPaths(n);
-        for (char c : paths) {
+        for (auto& c : paths) {
             switch (c) {
                 case 'L':
                     g[i].push_back(i - 1);
@@ -211,14 +211,14 @@ int main() {
     pair<int,int> connection;
     for (int i = 0; i < (int)components.size() - 1; ++i) {
         for (int j = i + 1; j < (int)components.size(); ++j) {
-            for (int k : components[i]) {
+            for (auto& k : components[i]) {
                 int v[] = {
                     (k - 1) % M == M - 1 ? -1 : k - 1, //L
                     (k + 1) % M == 0     ? -1 : k + 1, //R
                     k < M                ? -1 : k - M, //U
                     k >= M * (N - 1)     ? -1 : k + M  //D
                 };
-                for (int s : v) {
+                for (auto& s : v) {
                     if (s != -1 && find(components[j].begin(), components[j].end(), s) != components[j].end()) {
                         int sz = (int)components[i].size() + (int)components[j].size();
                         if (sz > res) {

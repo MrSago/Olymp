@@ -18,48 +18,29 @@ int main() {
     int counts[3] = { 0 };
     int N; fin >> N;
 
-    if (N == 1) {
-        fout << "0\n";
-        return 0;
-    }
     for (int i = 0; i < N; ++i) {
         fin >> arr[i];
         ++counts[arr[i] - 1];
     }
 
-    int index[2] = { counts[0], counts[0] + counts[1]};
+    int c12 = 0, c13 = 0; // 2s in seg1, 3s in seg1
+    int c21 = 0, c23 = 0; // 1s in seg2, 3s in seg2
+    int c31 = 0, c32 = 0; // 1s in seg3, 2s in seg3
 
-    int res = 0;
-    for (int i = 1, k = 0; i <= 2; ++i) {
-        for (int j = 0; j < counts[i - 1]; ++j, ++k) {
-            if (arr[k] != i) {
-                bool swaped = false;
-                int s = arr[k] == 2 ? index[0] : index[1];
-                int e = arr[k] == 2 ? index[1] : N;
-                for ( ; s < e; ++s) {
-                    if (arr[s] == i) {
-                        swap(arr[k], arr[s]);
-                        ++res;
-                        swaped = true;
-                        break;
-                    }
-                }
-                if (!swaped) {
-                    s = arr[k] == 2 ? index[1] : index[0];
-                    e = arr[k] == 2 ? N : index[1];
-                    for (; s < e; ++s) {
-                        if (arr[s] == i) {
-                            swap(arr[k], arr[s]);
-                            ++res;
-                            break;
-                        }
-                    }
-                }
-            }
-        }
+    for (int i = 0; i < counts[0]; ++i) {
+        c12 += arr[i] == 2;
+        c13 += arr[i] == 3;
+    }
+    for (int i = counts[0]; i < counts[0] + counts[1]; ++i) {
+        c21 += arr[i] == 1;
+        c23 += arr[i] == 3;
+    }
+    for (int i = counts[0] + counts[1]; i < N; ++i) {
+        c31 += arr[i] == 1;
+        c32 += arr[i] == 2;
     }
 
-    fout << res << '\n';
+    fout << min(c12, c21) + min(c23, c32) + min(c31, c13) + 2 * (max(c12, c21) - min(c12, c21)) << '\n';
 
     return 0;
 }

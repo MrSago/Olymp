@@ -63,8 +63,8 @@ Task | Description | Ready
 :---:|:-----------:|:----:
 [castle](https://github.com/MrSago/Olymp/tree/main/Usaco-Tasks/Chapter%202/Section%202.1/castle) | The Castle | ✔
 [frac1](https://github.com/MrSago/Olymp/tree/main/Usaco-Tasks/Chapter%202/Section%202.1/frac1) | Ordered Fractions | ✔
-[sort3](https://github.com/MrSago/Olymp/tree/main/Usaco-Tasks/Chapter%202/Section%202.1/sort3) | Sorting a Three-Valued Sequence | ⏰
-[holstein](https://github.com/MrSago/Olymp/tree/main/Usaco-Tasks/Chapter%202/Section%202.1/holstein) | Healthy Holsteins | ❌
+[sort3](https://github.com/MrSago/Olymp/tree/main/Usaco-Tasks/Chapter%202/Section%202.1/sort3) | Sorting a Three-Valued Sequence | ✔
+[holstein](https://github.com/MrSago/Olymp/tree/main/Usaco-Tasks/Chapter%202/Section%202.1/holstein) | Healthy Holsteins | ⏰
 [hamming](https://github.com/MrSago/Olymp/tree/main/Usaco-Tasks/Chapter%202/Section%202.1/hamming) | Hamming Codes | ❌
 
 #### Section 2.2 - Data Structures, Dynamic Prog (0/?) ❌

@@ -16,6 +16,7 @@
 *.c                     text
 *.cpp                   text
 *.py                    text
+*.bat                   text
 
 # Input test files
 *.in                    text

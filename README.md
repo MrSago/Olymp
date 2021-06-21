@@ -6,11 +6,16 @@ Here you can find my solutions for Olympiad and Sports programming problems. (\*
 #### This repository contains solutions for:
 - [CodeForces](https://codeforces.com/)
 - [USACO](https://train.usaco.org/)
-- Olympiads and contests
+- Olympiads and Сontests
+- Practice Tasks
+
+#### Also contains:
+- Scripts
+- Code Templates
 
 #### Compilers and interpreters used:
 - gcc/g++ (c11/c++17)
-- Python 3.9.4
+- Python 3.9.5
 
 ***
 

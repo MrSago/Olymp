@@ -1,6 +1,7 @@
 
 /.vscode
 *.exe
+*.jar
 *.out
 output.txt
 *cf.in

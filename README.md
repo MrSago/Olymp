@@ -16,6 +16,7 @@ Here you can find my solutions for Olympiad and Sports programming problems. (\*
 #### Compilers and interpreters used:
 - gcc/g++ (c11/c++17)
 - Python 3.9.5
+- Kotlin 1.5.20
 
 ***
 

@@ -45,6 +45,9 @@ private fun isWhiteSpace(c: Char) = c in " \r\n\t"
 
 
 fun main() {
-
+    val tt = readlnInt()
+    while (tt--) {
+        
+    }
 }
 

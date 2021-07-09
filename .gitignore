@@ -3,8 +3,9 @@
 *.exe
 *.jar
 *.out
-output.txt
+*output.txt
 *cf.in
 *cf.ok
 *cf.out
+!/CodeForces/Scripts/et.exe
 

@@ -23,3 +23,6 @@
 *.in                    text
 *.txt                   text
 
+# Executable files
+*.exe                   bin
+

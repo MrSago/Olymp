@@ -3,6 +3,9 @@
 
 using namespace std;
 
+using LL = long long int;
+using ULL = unsigned long long int;
+
 template<typename T = int>
 inline T nxt() {
     T x; cin >> x; return x;
@@ -13,7 +16,7 @@ int main() {
     cin.tie(0);
 
     int tt = nxt();
-    while(tt--) {
+    while (tt--) {
         
     }
 

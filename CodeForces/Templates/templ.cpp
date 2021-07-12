@@ -3,13 +3,12 @@
 
 using namespace std;
 
-using LL = long long int;
-using ULL = unsigned long long int;
+using LL = long long;
+using ULL = unsigned long long;
 
-template<typename T = int>
-inline T nxt() {
-    T x; cin >> x; return x;
-}
+inline int nxt() { int x; scanf("%d", &x); return x; }
+inline LL nxtLL() { LL x; scanf("%lld", &x); return x; }
+inline ULL nxtULL() { ULL x; scanf("%llu", &x); return x; }
 
 int main() {
     ios::sync_with_stdio(false);

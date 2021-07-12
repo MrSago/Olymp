@@ -1,94 +1,100 @@
 
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 
 using namespace std;
 
-using LL = long long int;
-using ULL = unsigned long long int;
+using LL = long long;
+using ULL = unsigned long long;
+using LD = long double;
 
-template<typename T = int>
-inline T nxt() {
-    T x; cin >> x; return x;
-}
+using vi = vector<int>;
+using vll = vector<LL>;
+using vull = vector<ULL>;
+using vb = vector<bool>;
 
-vector<vector<int>> g;
-vector<int> color;
-vector<bool> gray, black;
+using Graph = vector<vi>;
 
-void dfs(int v) {
-    color[v] = 1;
-    for (int& u : g[v]) {
-        if (color[u] == 1) {
-            gray[u] = true;
-        } else if (color[u] == 2) {
-            black[u] = true;
+inline int nxt() { int x; scanf("%d", &x); return x; }
+inline LL nxtLL() { LL x; scanf("%lld", &x); return x; }
+inline ULL nxtULL() { ULL x; scanf("%llu", &x); return x; }
+
+constexpr int MOD = 1000007;
+
+
+void solve(int test = 1) {
+    Graph g(nxt());
+    vi color(g.size(), 0);
+    vb gray(g.size(), false);
+    vb black(g.size(), false);
+
+    for (int m = nxt(); m > 0; --m) {
+        g[nxt() - 1].push_back(nxt() - 1);
+    }
+
+    function<void(int)> dfs = [&](int v) {
+        color[v] = 1;
+        for (int& u : g[v]) {
+            if (color[u] == 1) {
+                gray[u] = true;
+            } else if (color[u] == 2) {
+                black[u] = true;
+            } else {
+                dfs(u);
+            }
+        }
+        color[v] = 2;
+    };
+
+    dfs(0);
+
+    function<void(int)> dfs2 = [&](int v) {
+        for (int& u : g[v]) {
+            if (!gray[u]) {
+                gray[u] = true;
+                dfs2(u);
+            }
+        }
+    };
+
+    function<void(int)> dfs3 = [&](int v) {
+        for (int& u : g[v]) {
+            if (!black[u]) {
+                black[u] = true;
+                dfs3(u);
+            }
+        }
+    };
+
+    for (int i = 0; i < (int)g.size(); ++i) {
+        if (gray[i]) {
+            dfs2(i);
+        }
+        if (black[i]) {
+            dfs3(i);
+        }
+    }
+
+    for (int i = 0; i < (int)g.size(); ++i) {
+        if (!color[i]) {
+            cout << "0 ";
+        } else if (gray[i]) {
+            cout << "-1 ";
+        } else if (black[i]) {
+            cout << "2 ";
         } else {
-            dfs(u);
+            cout << "1 ";
         }
     }
-    color[v] = 2;
+    cout << '\n';
 }
 
-void dfs2(int v) {
-    for (int& u : g[v]) {
-        if (!gray[u]) {
-            gray[u] = true;
-            dfs2(u);
-        }
-    }
-}
-
-void dfs3(int v) {
-    for (int& u : g[v]) {
-        if (!black[u]) {
-            black[u] = true;
-            dfs3(u);
-        }
-    }
-}
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(0);
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
 
-    int tt = nxt();
-    while (tt--) {
-        g.resize(nxt());
-        for (int i = 0, m = nxt(); i < m; ++i) {
-            g[nxt() - 1].push_back(nxt() - 1);
-        }
-
-        color.assign(g.size(), 0);
-        gray.assign(g.size(), false);
-        black.assign(g.size(), false);
-        dfs(0);
-        for (int i = 0; i < (int)g.size(); ++i) {
-            if (gray[i]) {
-                dfs2(i);
-            }
-            if (black[i]) {
-                dfs3(i);
-            }
-        }
-
-        for (int i = 0; i < (int)g.size(); ++i) {
-            if (!color[i]) {
-                cout << "0 ";
-            } else if (gray[i]) {
-                cout << "-1 ";
-            } else if (black[i]) {
-                cout << "2 ";
-            } else {
-                cout << "1 ";
-            }
-        }
-        cout << '\n';
-
-        g.clear();
-        color.clear();
-        gray.clear();
-        black.clear();
+    for (int t = 1, tc = nxt(); t <= tc; ++t) {
+        solve(t);
     }
 
     return 0;

@@ -11,7 +11,7 @@ using vi = vector<int>;
 using vll = vector<LL>;
 using vull = vector<ULL>;
 using vb = vector<bool>;
-
+using pii = pair<int,int>;
 using Graph = vector<vi>;
 
 inline int nxt() { int x; scanf("%d", &x); return x; }

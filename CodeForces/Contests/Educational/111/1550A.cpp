@@ -19,23 +19,12 @@ using vb = vector<bool>;
 using pii = pair<int,int>;
 using Graph = vector<vi>;
 
-inline int nxt() { int x; scanf("%d", &x); return x; }
-inline LL nxtLL() { LL x; scanf("%lld", &x); return x; }
-inline ULL nxtULL() { ULL x; scanf("%llu", &x); return x; }
-
-constexpr int MOD = 1000007;
+template<typename T = int>
+inline T nxt() { T x; cin >> x; return x; }
 
 
-void solve(int test = 1) {
-    int s = nxt();
-    int d = 1;
-    int ans = 1;
-    while (s - d > 0) {
-        ++ans;
-        s -= d;
-        d += 2;
-    }
-    cout << ans << '\n';
+void solve() {
+    cout << (int)ceil(sqrt(nxt())) << '\n';
 }
 
 
@@ -44,7 +33,7 @@ int main() {
     cin.tie(nullptr);
 
     for (int t = 1, tc = nxt(); t <= tc; ++t) {
-        solve(t);
+        solve();
     }
 
     return 0;

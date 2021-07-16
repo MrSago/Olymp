@@ -17,6 +17,8 @@ using Graph = vector<vi>;
 template <typename T = int>
 inline T nxt() { T x; cin >> x; return x; }
 
+constexpr int MOD = (int)1e9 + 7;
+
 
 void solve() {
     

@@ -31,7 +31,7 @@ void solve() {
     map<int,vi> pos;
     for (int i = 0; i < n; ++i) {
         int x = nxt();
-        if (pos[x].size() < k) {
+        if ((int)pos[x].size() < k) {
             pos[x].push_back(i);
             ++cnt;
         }

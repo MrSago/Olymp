@@ -1,23 +1,27 @@
 
 #include <bits/stdc++.h>
-
 using namespace std;
 
-using LL = long long;
-using ULL = unsigned long long;
-using LD = long double;
+#define endl ('\n')
 
-using vi = vector<int>;
-using vll = vector<LL>;
-using vull = vector<ULL>;
+using ll = long long;
+using ull = unsigned long long;
+using ld = long double;
+
 using vb = vector<bool>;
+using vc = vector<char>;
+using vi = vector<int>;
+using vll = vector<ll>;
+using vull = vector<ull>;
+
 using pii = pair<int,int>;
-using Graph = vector<vi>;
+using graph = vector<vi>;
 
 template <typename T = int>
 inline T nxt() { T x; cin >> x; return x; }
 
-constexpr int MOD = (int)1e9 + 7;
+constexpr int MOD = int(1e9) + 7;
+constexpr int NMOD = 998244353;
 
 
 void solve() {

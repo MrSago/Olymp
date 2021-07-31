@@ -11,7 +11,7 @@
 			"#include <bits/stdc++.h>",
 			"using namespace std;",
 			"",
-			"#define endl ('\\n')",
+			"#define nl ('\\n')",
 			"",
 			"using ll = long long;",
 			"using ull = unsigned long long;",

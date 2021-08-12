@@ -68,7 +68,7 @@ public:
 #define MAXN (3999)
 
 void full_test() {
-    vector<long long> times(MAXN);
+    long long t = 0;
     int fix = 20;
 
     cout << "\n=====================TEST=====================\n";
@@ -79,16 +79,16 @@ void full_test() {
         int arab = RomanNumerals.from_roman(roman);
         auto stop = chrono::high_resolution_clock::now();
         
-        times[n - 1] = (stop - start).count();
+        t += (stop - start).count();
 
         fix -= (n == 10 || n == 100 || n == 1000);
         cout << "n=" << n << setw(fix) << right << roman << '=' << arab << setw(fix) << right << (arab == n ? "ACCEPTED" : "FAIL") << '\n';
     }
     cout << "==============================================\n";
 
-    double full_time = accumulate(times.begin(), times.end(), 0ULL) * 1e-6;
+    long double full_time = (long double)t * (long double)1e-6;
     cout << "Full time: " << full_time << " ms\n";
-    cout << "Avg time: " << full_time / MAXN << " ms\n";
+    cout << "Avg time: " << full_time / MAXN << " ms\n\n";
 }
 
 int main() {

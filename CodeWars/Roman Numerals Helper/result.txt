@@ -4001,5 +4001,6 @@ n=3997       MMMCMXCVII=3997         ACCEPTED
 n=3998      MMMCMXCVIII=3998         ACCEPTED
 n=3999        MMMCMXCIX=3999         ACCEPTED
 ==============================================
-Full time: 3.0302 ms
-Avg time: 0.000757739 ms
+Full time: 1.0001 ms
+Avg time: 0.000250088 ms
+

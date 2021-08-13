@@ -82,7 +82,7 @@ void full_test() {
         t += (stop - start).count();
 
         fix -= (n == 10 || n == 100 || n == 1000);
-        cout << "n=" << n << setw(fix) << right << roman << '=' << arab << setw(fix) << right << (arab == n ? "ACCEPTED" : "FAIL") << '\n';
+        cout << "n=" << n << setw(fix) << right << roman << '=' << arab << setw(fix) << right << (arab == n ? "ACCEPTED" : "FAILED") << '\n';
     }
     cout << "==============================================\n";
 

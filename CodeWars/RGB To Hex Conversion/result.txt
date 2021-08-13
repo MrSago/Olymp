@@ -1,0 +1,10 @@
+
+=====================TEST=====================
+          Input    Output    Answer   Verdict
+      (0, 0, 0)    000000    000000  ACCEPTED
+(-20, 275, 125)    00FF7D    00FF7D  ACCEPTED
+      (1, 2, 3)    010203    010203  ACCEPTED
+(254, 253, 252)    FEFDFC    FEFDFC  ACCEPTED
+(255, 255, 255)    FFFFFF    FFFFFF  ACCEPTED
+==============================================
+

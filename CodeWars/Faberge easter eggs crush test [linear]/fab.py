@@ -1,4 +1,10 @@
 
+"""
+    author: MrS4g0
+    created: 13.08.2021 21:02:33
+    kata link: https://www.codewars.com/kata/5976c5a5cd933a7bbd000029/train/python
+"""
+
 MOD = 998244353
 
 inv = [0, 1]

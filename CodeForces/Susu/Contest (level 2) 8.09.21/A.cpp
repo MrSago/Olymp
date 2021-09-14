@@ -9,13 +9,14 @@
 using namespace std;
 
 
+template <typename T = int>
+inline T nxt() { T x; cin >> x; return x; }
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int n;
-    cin >> n;
-    cout << (int)pow(2, n) - 1 << '\n';
+    cout << (int)pow(2, nxt()) - 1 << '\n';
 
     return 0;
 }

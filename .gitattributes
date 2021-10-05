@@ -2,7 +2,7 @@
 .gitattributes          export-ignore
 .gitignore              export-ignore
 *README.md              export-ignore
-/20.03.2021/table.png   export-ignore
+*.png                   export-ignore
 
 * text=auto
 

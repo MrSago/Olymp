@@ -7,7 +7,8 @@ Here you can find my solutions for Olympiad and Sports programming problems. (\*
 - [CodeForces](https://codeforces.com/)
 - [CodeWars](https://www.codewars.com/)
 - [USACO](https://train.usaco.org/)
-- Olympiads and Сontests
+- Olympiads
+- University Contests
 - Practice Tasks
 
 #### Also contains:

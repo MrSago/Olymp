@@ -49,8 +49,7 @@ int main() {
         switch (c) {
             case '+':
                 getchar();
-                size_t s;
-                scanf("%llu", &s);
+                size_t s; scanf("%llu", &s);
                 bug.Add(s);
             break;
             

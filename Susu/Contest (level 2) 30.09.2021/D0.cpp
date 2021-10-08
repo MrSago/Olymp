@@ -57,8 +57,7 @@ ull sum_tree(ull v, ull tl, ull tr, ull l, ull r) {
 void update (ull v, ull tl, ull tr, ull pos, ull new_val) {
 	if (tl == tr) {
 		tree[v] = new_val;
-    }
-	else {
+    } else {
 		ull tm = (tl + tr) >> 1;
 		if (pos <= tm) {
 			update (v << 1, tl, tm, pos, new_val);

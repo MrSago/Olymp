@@ -139,8 +139,8 @@ public:
 
 Matrix binpow_mat(Matrix a, unsigned n) {
     Matrix res(matrix_v({
-        { "1", "0" },
-        { "0", "1" }
+        { 1, 0 },
+        { 0, 1 }
     }));
     while (n) {
         if (n & 1) {
@@ -154,19 +154,24 @@ Matrix binpow_mat(Matrix a, unsigned n) {
 
 
 int main() {
-    constexpr int N = 100;
-    //freopen("out.txt", "w", stdout);
+    constexpr int N = 1000000;
+    freopen("fib.out", "w", stdout);
 
     Matrix F01(matrix_v(
-        { { "0", "1" } }
+        { { 0, 1 } }
     ));
     Matrix P(matrix_v({
-        { "0", "1" },
-        { "1", "1" }
+        { 0, 1 },
+        { 1, 1 }
     }));
 
+    cerr << "Calc fib...";
+    auto start = std::chrono::high_resolution_clock::now();
     Matrix res = F01 * binpow_mat(P, N);
+    auto stop = std::chrono::high_resolution_clock::now();
+    cerr << "\nDone!\n";
 
+    cout << "Calculation time: " << (stop - start).count() * 1e-9 << " ms\n";
     cout << "F(" << N << ") F(" << N + 1 << ")\n";
     res.print();
 

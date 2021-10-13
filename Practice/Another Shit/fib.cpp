@@ -116,9 +116,10 @@ BigNum Fib(unsigned n) {
     BigNum a0 = 1, a1 = 0,
            a2 = 0, a3 = 1;
 
-    --n;
-
     BigNum t0, t1, t2, t3;
+    BigNum f0, f1, f2, f3;
+
+    --n;
 
     while (n) {
         #pragma omp parallel
@@ -139,7 +140,6 @@ BigNum Fib(unsigned n) {
                     t3 = a2 * p1 + a3 * p3;
                 }
 
-                #pragma omp barrier
                 #pragma omp single
                 {
                     a0 = t0;
@@ -152,26 +152,24 @@ BigNum Fib(unsigned n) {
             #pragma omp sections
             {
                 #pragma omp section
-                t0 = p0 * p0 + p1 * p2;
+                f0 = p0 * p0 + p1 * p2;
 
                 #pragma omp section
-                t1 = p1 * (p0 + p3);
+                f1 = p1 * (p0 + p3);
 
                 #pragma omp section
-                t2 = p2 * (p0 + p3);
+                f2 = p2 * (p0 + p3);
 
                 #pragma omp section
-                t3 = p1 * p2 + p3 * p3;
-
+                f3 = p1 * p2 + p3 * p3;
             }
 
-            #pragma omp barrier
             #pragma omp single
             {
-                p0 = t0;
-                p1 = t1;
-                p3 = t3;
-                p2 = t2;
+                p0 = f0;
+                p1 = f1;
+                p3 = f3;
+                p2 = f2;
             }
         }
 

@@ -8,22 +8,22 @@
 using namespace std;
 
 
-constexpr int base = 1000000000;
+using uint128_t = unsigned __int128;
+constexpr uint64_t base = static_cast<uint64_t>(1e19);
 
 class BigNum {
 private:
-    vector<int> _v;
+    vector<uint64_t> _v;
 
     void _fill_vec(string& input) {
-        for (int i = (int)input.length(); i > 0; i -= 9) {
-            if (i < 9) {
-                _v.push_back(atoi(input.substr(0, i).c_str()));
-            } else {
-                _v.push_back(atoi(input.substr(i - 9, 9).c_str()));
-            }
+        size_t i = input.length();
+        for (; i >= 19; i -= 19) {
+            _v.push_back(stoull(input.substr(i - 19, 19)));
+        }
+        if (i > 0) {
+            _v.push_back(stoull(input.substr(0, i)));
         }
     }
-
 
 public:
     BigNum() {}
@@ -33,61 +33,76 @@ public:
     }
 
     BigNum(const char num[]) {
-        string s = num;
+        string s(num);
         _fill_vec(s);
     }
 
+    BigNum(size_t vsz) : _v(vsz) {}
+
     BigNum(const int num) {
-        if (num < base) {
-            _v.push_back(num);
-        } else {
-            _v.push_back(num % base);
-            _v.push_back(num / base);
-        }
+        _v.push_back(static_cast<uint64_t>(num));
     }
 
-    string get_str() {
-        if (_v.empty()) {
-            return string("0");
-        }
-        char s[10] = { '\0' };
-        sprintf(s, "%d", _v.back());
-        string res = s;
-        for (int i = (int)_v.size() - 2; i >= 0; --i) {
-            sprintf(s, "%09d", _v[i]);
-            res += s;
-        }
-        return res;
-    }
+    // BigNum (const BigNum& obj) : _v(move(obj._v)) {}
 
-    BigNum operator+(const BigNum& in) {
-        for (int i = 0, carry = 0; i < (int)max(_v.size(), in._v.size()) || carry; ++i) {
-            if (i == (int)_v.size()) {
+    // BigNum (const BigNum&& obj) : _v(move(obj._v)) {}
+
+    // BigNum& operator=(const BigNum& obj) {
+    //     _v = move(obj._v);
+    //     return *this;
+    // }
+
+    BigNum operator+(const BigNum& obj) {
+        size_t mx = max(_v.size(), obj._v.size());
+        bool carry = false;
+        for (size_t i = 0; i < mx || carry; ++i) {
+            if (i == _v.size()) {
                 _v.push_back(0);
             }
-            _v[i] += carry + (i < (int)in._v.size() ? in._v[i] : 0);
-            carry = _v[i] >= base;
+            uint128_t cur = static_cast<uint128_t>(_v[i]) + (i < obj._v.size() ? obj._v[i] : 0) + carry ;
+            carry = cur >= base;
             if (carry) {
-                _v[i] -= base;
+                cur -= base;
             }
+            _v[i] = static_cast<uint64_t>(cur);
         }
         return *this;
     }
 
-    BigNum operator*(const BigNum& in) {
-        BigNum out;
-        out._v.resize(_v.size() + in._v.size());
-        for (int i = 0; i < (int)_v.size(); ++i) {
-            for (int j = 0, carry = 0; j < (int)in._v.size() || carry; ++j) {
-                long long cur = out._v[i + j] + _v[i] * 1ll * (j < (int)in._v.size() ? in._v[j] : 0) + carry;
-                out._v[i + j] = int(cur % base);
-                carry = int(cur / base);
+    BigNum operator*(const BigNum& obj) {
+        size_t lsz = _v.size(), rsz = obj._v.size();
+        BigNum out(lsz + rsz);
+        for (size_t i = 0; i < lsz; ++i) {
+            for (size_t j = 0, carry = 0; j < rsz || carry; ++j) {
+                uint128_t cur = out._v[i + j] + static_cast<uint128_t>(_v[i]) * (j < rsz ? obj._v[j] : 0) + carry;
+                out._v[i + j] = static_cast<uint64_t>(cur % base);
+                carry = static_cast<uint64_t>(cur / base);
             }
         }
         while (out._v.size() > 1 && out._v.back() == 0) {
             out._v.pop_back();
         }
         return out;
+    }
+
+    string get_str() {
+        if (_v.empty()) {
+            return string("0");
+        }
+        char s[20] = { '\0' };
+        sprintf(s, "%llu", _v.back());
+        string res = s;
+        if (_v.size() > 2) {
+            for (size_t i = _v.size() - 2; i > 0; --i) {
+                sprintf(s, "%019llu", _v[i]);
+                res += s;
+            }
+        }
+        if (_v.size() >= 2) {
+            sprintf(s, "%019llu", _v[0]);
+            res += s;
+        }
+        return res;
     }
 };
 
@@ -157,9 +172,9 @@ int main() {
     constexpr int N = 1000000;
     freopen("fib.out", "w", stdout);
 
-    Matrix F01(matrix_v(
-        { { 0, 1 } }
-    ));
+    Matrix F01(matrix_v({
+        { 0, 1 }
+    }));
     Matrix P(matrix_v({
         { 0, 1 },
         { 1, 1 }

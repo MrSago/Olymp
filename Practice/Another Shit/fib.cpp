@@ -5,6 +5,7 @@
 */
 
 #include <bits/stdc++.h>
+#include <omp.h>
 using namespace std;
 
 
@@ -50,18 +51,19 @@ public:
 
     BigNum operator+(const BigNum& obj) {
         size_t mx = max(_v.size(), obj._v.size());
+        BigNum out(mx);
         int carry = 0;
         for (size_t i = 0; i < mx || carry; ++i) {
             if (i == _v.size()) {
-                _v.push_back(0);
+                out._v.push_back(0);
             }
-            _v[i] += carry + (i < obj._v.size() ? obj._v[i] : 0);
-            carry = _v[i] >= base;
+            out._v[i] = _v[i] + carry + (i < obj._v.size() ? obj._v[i] : 0);
+            carry = out._v[i] >= base;
             if (carry) {
-                _v[i] -= base;
+                out._v[i] -= base;
             }
         }
-        return *this;
+        return out;
     }
 
     BigNum operator*(const BigNum& obj) {
@@ -107,90 +109,94 @@ public:
 };
 
 
-using matrix_v = vector<vector<BigNum>>;
+BigNum Fib(unsigned n) {
+    BigNum p0 = 0, p1 = 1,
+           p2 = 1, p3 = 1;
 
-class Matrix {
-public:
-    matrix_v _m;
-    int str = 0, col = 0;
+    BigNum a0 = 1, a1 = 0,
+           a2 = 0, a3 = 1;
 
-    Matrix() {}
+    --n;
 
-    Matrix(matrix_v m) : _m(m) {
-        str = (int)m.size();
-        col = (int)m[0].size();
-    }
+    BigNum t0, t1, t2, t3;
 
-    Matrix operator*(const Matrix& obj) {
-        if (col != obj.str) {
-            throw runtime_error("incorrect matrix sizes");
-        }
-        Matrix out;
-        out.str = str;
-        out.col = obj.col;
-        out._m.assign(out.str, vector<BigNum>(out.col));
-        for (int i = 0; i < out.str; ++i) {
-            for (int j = 0; j < out.col; ++j) {
-                BigNum tmp = 0;
-                for (int k = 0; k < out.col; ++k) {
-                    tmp = tmp + (_m[i][k] * obj._m[k][j]);
-                }
-                out._m[i][j] = tmp;
-            }
-        }
-        return out;
-    }
-
-    void print() {
-        for (int i = 0; i < str; ++i) {
-            for (int j = 0; j < col; ++j) {
-                cout << _m[i][j].get_str() << ' ';
-            }
-            cout << '\n';
-        }
-    }
-};
-
-
-Matrix binpow_mat(Matrix a, unsigned n) {
-    Matrix res(matrix_v({
-        { 1, 0 },
-        { 0, 1 }
-    }));
     while (n) {
-        if (n & 1) {
-            res = res * a;
+        #pragma omp parallel
+        {
+            if (n & 1) {
+                #pragma omp sections
+                {
+                    #pragma omp section
+                    t0 = a0 * p0 + a1 * p2;
+
+                    #pragma omp section
+                    t1 = a0 * p1 + a1 * p3;
+
+                    #pragma omp section
+                    t2 = a2 * p0 + a3 * p2;
+
+                    #pragma omp section
+                    t3 = a2 * p1 + a3 * p3;
+                }
+
+                #pragma omp barrier
+                #pragma omp single
+                {
+                    a0 = t0;
+                    a1 = t1;
+                    a2 = t2;
+                    a3 = t3; 
+                }
+            }
+
+            #pragma omp sections
+            {
+                #pragma omp section
+                t0 = p0 * p0 + p1 * p2;
+
+                #pragma omp section
+                t1 = p1 * (p0 + p3);
+
+                #pragma omp section
+                t2 = p2 * (p0 + p3);
+
+                #pragma omp section
+                t3 = p1 * p2 + p3 * p3;
+
+            }
+
+            #pragma omp barrier
+            #pragma omp single
+            {
+                p0 = t0;
+                p1 = t1;
+                p3 = t3;
+                p2 = t2;
+            }
         }
-        a = a * a;
+
         n >>= 1;
     }
-    return res;
+
+    return a3;
 }
 
 
 int main() {
-    constexpr int N = 1000;
+    constexpr int N = int(1e7);
+    constexpr int threads = 4;
     freopen("fib.out", "w", stdout);
 
-    Matrix F01(matrix_v(
-        { { 0, 1 } }
-    ));
-    Matrix P(matrix_v({
-        { 0, 1 },
-        { 1, 1 }
-    }));
-
-    cerr << "Calc fib...";
+    cerr << "Calc fibonacci(" << N << ")...";
     auto start = std::chrono::high_resolution_clock::now();
 
-    Matrix res = F01 * binpow_mat(P, N);
+    BigNum F = Fib(N);
 
     auto stop = std::chrono::high_resolution_clock::now();
     cerr << "\nDone!\n";
 
-    cout << "Calculation time: " << (stop - start).count() * 1e-9 << " ms\n";
-    cout << "F(" << N << ") F(" << N + 1 << ")\n";
-    res.print();
+    cout << "Calculation time: " << (stop - start).count() * 1e-9 << " sec\n";
+    cout << "Fib(" << N << ") = " << F.get_str() << '\n';
 
     return 0;
 }

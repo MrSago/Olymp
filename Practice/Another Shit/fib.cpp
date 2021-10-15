@@ -91,9 +91,14 @@ public:
         if (_v.empty()) {
             return string("0");
         }
+
         char s[10] = { '\0' };
         sprintf(s, "%d", _v.back());
-        string res = s;
+
+        string res;
+        res.reserve(_v.size() * 9 + 1);
+        res += s;
+
         if (_v.size() > 2) {
             for (size_t i = _v.size() - 2; i > 0; --i) {
                 sprintf(s, "%09d", _v[i]);
@@ -101,7 +106,7 @@ public:
             }
         }
         if (_v.size() >= 2) {
-            sprintf(s, "%09d", _v[0]);
+            sprintf(s, "%09d", _v.front());
             res += s;
         }
         return res;
@@ -142,10 +147,10 @@ BigNum Fib(unsigned n) {
 
                 #pragma omp single
                 {
-                    a0 = t0;
-                    a1 = t1;
-                    a2 = t2;
-                    a3 = t3; 
+                    a0 = move(t0);
+                    a1 = move(t1);
+                    a2 = move(t2);
+                    a3 = move(t3); 
                 }
             }
 
@@ -166,10 +171,10 @@ BigNum Fib(unsigned n) {
 
             #pragma omp single
             {
-                p0 = f0;
-                p1 = f1;
-                p3 = f3;
-                p2 = f2;
+                p0 = move(f0);
+                p1 = move(f1);
+                p3 = move(f3);
+                p2 = move(f2);
             }
         }
 
@@ -181,8 +186,7 @@ BigNum Fib(unsigned n) {
 
 
 int main() {
-    constexpr int N = int(1e7);
-    constexpr int threads = 4;
+    constexpr int N = int(3e6);
     freopen("fib.out", "w", stdout);
 
     cerr << "Calc fibonacci(" << N << ")...";

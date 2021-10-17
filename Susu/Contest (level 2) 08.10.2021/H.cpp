@@ -54,7 +54,7 @@ int main() {
 
     i64 l = 1, ans = 0;
     while (l <= r) {
-        i64 m = (l + r) / 2;
+        i64 m = (l + r) >> 1;
         i64 j = 0;
         for (i64 i = 0; i < n; ++i) {
             j = j + x[i] / m;

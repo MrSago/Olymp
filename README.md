@@ -16,8 +16,8 @@ Here you can find my solutions for Olympiad and Sports programming problems. (\*
 - Code Templates
 
 #### Compilers and interpreters used:
-- gcc/g++ (c11/c++17)
-- Python 3.9.6
+- gcc/g++ 11.2.0 (c11/c++17)
+- Python 3.10
 - Kotlin 1.5.20
 - Node.js 14.17.1
 

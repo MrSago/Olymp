@@ -28,8 +28,6 @@ Here you can find my solutions for Olympiad and Sports programming problems. (\*
 - [<img src="https://www.codewars.com/users/MrS4g0/badges/micro"/>](https://www.codewars.com/users/MrS4g0)
 - USACO ID: _sagosag1_
 
-#### Social:
-- [Discord Server](https://discord.gg/H4UdszUA9h)
 
 ***
 

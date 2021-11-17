@@ -9,7 +9,6 @@ Here you can find my solutions for Olympiad and Sports programming problems. (\*
 - [USACO](https://train.usaco.org/)
 - Olympiads
 - University Contests
-- Practice Tasks
 
 #### Also contains:
 - Scripts

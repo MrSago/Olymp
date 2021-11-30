@@ -42,7 +42,7 @@ int main() {
     cin.tie(nullptr);
 
     int n = nxt();
-    cout << (n == 3 || n == 4 ? 0 : n) << nl;
+    cout << (n == 3 || n == 4 ? 0 : n - 3) << nl;
 
     return 0;
 }

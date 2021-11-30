@@ -202,7 +202,7 @@ int main() {
     find_comps();
     sort(
         components.begin(), components.end(),
-        [](const vi& x, const vi& y) {
+        [&](const auto& x, const auto& y) {
             return x.size() > y.size();
         }
     );

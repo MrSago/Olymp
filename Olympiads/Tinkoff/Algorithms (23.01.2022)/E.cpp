@@ -41,7 +41,7 @@ int main() {
         res.insert(move(num));
     }
 
-    cout << res.size();
+    cout << res.size() << nl;
 
     return 0;
 }

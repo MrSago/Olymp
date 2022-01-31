@@ -76,7 +76,7 @@ void solve() {
                ++cur;
         cout << cur << ' ';
     }
-    cout << endl;
+    cout << nl;
 }
 
 

@@ -8,10 +8,10 @@ using i64 = long long;
 using ui64 = unsigned long long;
 using ld = long double;
 
-// using i128 = __int128;
-// using ui128 = unsigned __int128;
-// inline i128 iget() { i64 x; cin >> x; return (i128)x; }
-// inline ui128 uiget() { ui64 x; cin >> x; return (ui128)x; }
+using i128 = __int128;
+using ui128 = unsigned __int128;
+inline i128 iget() { i64 x; cin >> x; return static_cast<i128>(x); }
+inline ui128 uiget() { ui64 x; cin >> x; return static_cast<ui128>(x); }
 
 using vb = vector<bool>;
 using vc = vector<char>;

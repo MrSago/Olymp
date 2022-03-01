@@ -9,7 +9,6 @@ using namespace std;
 
 #define nl ('\n')
 
-
 struct costs {
     char c;
     int count;

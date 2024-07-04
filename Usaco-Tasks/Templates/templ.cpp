@@ -1,7 +1,7 @@
 
 /*
-ID: 
-TASK: 
+ID:
+TASK:
 LANG: C++
 */
 
@@ -10,12 +10,9 @@ LANG: C++
 using namespace std;
 
 int main() {
-    ios::sync_with_stdio(false);
-    ifstream fin(".in");
-    ofstream fout(".out");
+  ios::sync_with_stdio(false);
+  ifstream fin(".in");
+  ofstream fout(".out");
 
-
-
-    return 0;
+  return 0;
 }
-

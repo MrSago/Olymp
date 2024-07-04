@@ -2,14 +2,10 @@
 	"s4":{
 		"prefix": "s4",
 		"body": [
-			"",
 			"$BLOCK_COMMENT_START",
-			"    author: MrS4g0",
-			"    created: $CURRENT_DATE.$CURRENT_MONTH.$CURRENT_YEAR $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
-			"$BLOCK_COMMENT_END",
-			"",
-			"",
-			""
+			"  author: MrS4g0",
+			"  created: $CURRENT_DATE.$CURRENT_MONTH.$CURRENT_YEAR $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+			"$BLOCK_COMMENT_END"
 		],
 		"description": "MrS4g0 Snippet"
 	}

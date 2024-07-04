@@ -1,3 +1,9 @@
+/*
+  author: MrS4g0
+  created: 27.06.2022 08:53:20
+  kata link: https://www.codewars.com/kata/59a421985eb5d4bb41000031/javascript
+*/
+
 f
 =
 [

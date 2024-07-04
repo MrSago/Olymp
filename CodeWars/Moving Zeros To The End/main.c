@@ -1,6 +1,7 @@
 /*
   author: MrS4g0
   created: 25.06.2024 23:31:46
+  kata link: https://www.codewars.com/kata/52597aa56021e91c93000cb0/c
 */
 
 #include <limits.h>

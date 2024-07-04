@@ -10,11 +10,8 @@ LANG: C++
 using namespace std;
 
 int main() {
-    ifstream fin("holstein.in");
-    ofstream fout("holstein.out");
+  ifstream fin("holstein.in");
+  ofstream fout("holstein.out");
 
-
-
-    return 0;
+  return 0;
 }
-

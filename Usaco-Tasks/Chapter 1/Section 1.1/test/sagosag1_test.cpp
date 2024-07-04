@@ -10,13 +10,13 @@ LANG: C++
 using namespace std;
 
 int main() {
-    ios::sync_with_stdio(false);
-    ifstream fin("test.in");
-    ofstream fout("test.out");
+  ios::sync_with_stdio(false);
+  ifstream fin("test.in");
+  ofstream fout("test.out");
 
-    int a, b; fin >> a >> b;
-    fout << a + b << '\n';
+  int a, b;
+  fin >> a >> b;
+  fout << a + b << '\n';
 
-    return 0;
+  return 0;
 }
-

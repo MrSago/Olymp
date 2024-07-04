@@ -13,57 +13,49 @@ using namespace std;
 vector<int> crypt;
 
 inline bool check(int num) {
-    while (num) {
-        int digit = num % 10;
-        bool flag = false;
-        for (const auto& it : crypt) {
-            if (digit == it) {
-                flag = true;
-                break;
-            }
-        }
-        if (!flag) {
-            return false;
-        }
-        num /= 10;
+  while (num) {
+    int digit = num % 10;
+    bool flag = false;
+    for (const auto& it : crypt) {
+      if (digit == it) {
+        flag = true;
+        break;
+      }
     }
-    return true;
+    if (!flag) {
+      return false;
+    }
+    num /= 10;
+  }
+  return true;
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    ifstream fin("crypt1.in");
-    ofstream fout("crypt1.out");
+  ios::sync_with_stdio(false);
+  ifstream fin("crypt1.in");
+  ofstream fout("crypt1.out");
 
-    int N; fin >> N;
-    crypt.resize(N);
-    for (auto& it : crypt) {
-        fin >> it;
+  int N;
+  fin >> N;
+  crypt.resize(N);
+  for (auto& it : crypt) {
+    fin >> it;
+  }
+
+  int res = 0;
+  for (int i = 100; i <= 999; ++i) {
+    for (int j = 10; j <= 99; ++j) {
+      int p1 = i * (j % 10);
+      int p2 = i * (j / 10);
+      int prod = i * j;
+      if (p1 <= 999 && p2 <= 999 && prod <= 9999 && check(i) && check(j) &&
+          check(p1) && check(p2) && check(prod)) {
+        ++res;
+      }
     }
+  }
 
-    int res = 0;
-    for (int i = 100; i <= 999; ++i) {
-        for (int j = 10; j <= 99; ++j) {
-            int p1 = i * (j % 10);
-            int p2 = i * (j / 10);
-            int prod = i * j;
-            if (
-                p1 <= 999 &&
-                p2 <= 999 &&
-                prod <= 9999 &&
-                check(i) &&
-                check(j) &&
-                check(p1) &&
-                check(p2) &&
-                check(prod)
-            ) {
-                ++res;
-            }
-        }
-    }
+  fout << res << '\n';
 
-    fout << res << '\n';
-
-    return 0;
+  return 0;
 }
-

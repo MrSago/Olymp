@@ -1,4 +1,3 @@
-
 """
 ID: sagosag1
 TASK: frac1
@@ -22,4 +21,3 @@ with open("frac1.out", "w") as fout:
     for i in res:
         fout.write(f"{i}\n")
     fout.write("1/1\n")
-

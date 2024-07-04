@@ -10,11 +10,8 @@ LANG: C++
 using namespace std;
 
 int main() {
-    ifstream fin("hamming.in");
-    ofstream fout("hamming.out");
+  ifstream fin("hamming.in");
+  ofstream fout("hamming.out");
 
-
-
-    return 0;
+  return 0;
 }
-
